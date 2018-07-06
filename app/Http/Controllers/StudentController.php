@@ -41,7 +41,6 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        // return response()->Json('Yes', 200);
         $user = Auth::user();
         if($user->isAdmin || $user->isStaff){
             $rules = array(
