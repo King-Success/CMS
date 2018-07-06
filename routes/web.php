@@ -14,14 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/student', 'StudentController@index');
-Route::get('/student/create', 'StudentController@create');
-Route::post('/student/create', 'StudentController@store');
-Route::get('/logout', 'Auth\LoginController@Logout');
-Route::get('/home', function(){
-    return view('home');
-})->middleware('auth');
+// You must be authenticated before accessing these route
+Route::middleware('auth')->group(function(){
+    Route::get('/student', 'StudentController@index');
+    Route::get('/student/create', 'StudentController@create');
+    Route::post('/student/create', 'StudentController@store');
+    Route::get('/logout', 'Auth\LoginController@Logout');
+    Route::get('/home', function(){ return view('home'); });
+});
 Auth::routes();
 
 

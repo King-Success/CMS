@@ -9,9 +9,17 @@ use Auth;
 use Validator;
 use Redirect;
 use Input;
+use Datatables;
 
 class StudentController extends Controller
 {
+    /**
+     * Display a listing of the using yajra datatables.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+
     /**
      * Display a listing of the resource.
      *
@@ -19,8 +27,11 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::all();
-        return view('student')->with('data', $students);
+        $user = Auth::user();
+        if($user->isAdmin || $user->isStaff){
+            return view('student');
+        }
+        return Redirect::to('/home');
     }
 
     /**
