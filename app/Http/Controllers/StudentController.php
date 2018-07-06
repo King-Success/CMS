@@ -14,11 +14,13 @@ use Datatables;
 class StudentController extends Controller
 {
     /**
-     * Display a listing of the using yajra datatables.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
+    * Process datatables ajax request.
+    *
+    * @return \Illuminate\Http\JsonResponse
+    */
+    public function yajraAjaxSearch() {
+        return Datatables::of(Student::all())->make(true);
+    }
 
     /**
      * Display a listing of the resource.
