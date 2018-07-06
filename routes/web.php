@@ -15,13 +15,29 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/create', function(){
-    $student = App\student::find(1);
-    $subject = new App\subject(['name' => 'physics', 'class_id' => 1, 'staff_id' => 2]);
-
-    $student->subject()->save($subject);
-});
-
+Route::get('/student', 'StudentController@index');
+Route::get('/student/create', 'StudentController@create');
+Route::post('/student/create', 'StudentController@store');
+Route::get('/logout', 'Auth\LoginController@Logout');
+Route::get('/home', function(){
+    return view('home');
+})->middleware('auth');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+
+
+// Route::get('/home', 'HomeController@index')->name('home');
+
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
+
+// Route::get('/create', function(){
+//     $student = App\student::find(1);
+//     $subject = new App\subject(['name' => 'physics', 'class_id' => 1, 'staff_id' => 2]);
+
+//     $student->subject()->save($subject);
+// })->middleware('admin', 'staff');

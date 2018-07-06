@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use App\Student;
+use Auth;
+use Validator;
+use Redirect;
+use Input;
 
 class StudentController extends Controller
 {
@@ -13,7 +19,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        
+        $students = Student::all();
+        return view('student')->with('data', $students);
     }
 
     /**
@@ -23,7 +30,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        
+        return view('student_form');
     }
 
     /**
@@ -34,9 +41,40 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        // return response()->Json('Yes', 200);
+        $user = Auth::user();
+        if($user->isAdmin || $user->isStaff){
+            $rules = array(
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'othername' => 'required',
+            'gender' => 'required',
+            'DOB' => 'required',
+            'mobile_number' => 'required|numeric',
+            'nationality' => 'required',
+            'state' => 'required',
+            'LGA' => 'required',
+            'religion' => 'required',
+            'class_id' => 'required|integer',
+        );
 
+        $validator = Validator::make(Input::all(), $rules);
+
+        if ($validator->fails()) {
+            return Redirect::to('/student/create')
+                ->with('status', 'Student creation Failed')
+                ->withErrors($validator)
+                ->withInput(Input::all());
+        } else {
+            $student = Student::create(Input::all());
+            return Redirect::to('/student')
+                ->with('status', 'Created Successfully');
+        }
+    }
+}
+
+    
+        
     /**
      * Display the specified resource.
      *
