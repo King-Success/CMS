@@ -10,9 +10,10 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
     <!-- fontawesome cdn here -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-    
-    <!-- <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/bootstrap.css"> -->
+    <!-- jQuery -->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- DataTables -->
+    <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
     <!-- custom style sheet here -->
     <link rel="stylesheet" href="css/style.css">
    <!DOCTYPE html>
@@ -85,10 +86,10 @@
     </header>
 
     <!-- SIDEBAR SECTION -->
-    <div class="col-lg-2">
+    <!-- <div class="col-lg-2">
 
-    </div>
-    <div class="col-lg-10">
+    </div> -->
+    <div class="col-lg-12">
         <!-- MESSAGE SECTION -->
     @if (session('status'))
     <section class="pt-2">
@@ -126,102 +127,41 @@
         </div>
     </section>
 
-    <!-- Users -->
-    <section id="posts">
-        <div class="container">
+    <!-- Students -->
+    <section id="students">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col">
-                    <div class="card">
+                    <div class="card table-responsive">
                         <div class="card-header">
                             <h4>Registered Students</h4>
                         </div>
-                        <table class="table table-striped">
+                        <table class="table table-striped" id="student-table">
                             <thead class="thead-inverse">
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th></th>                                
-                                    <th></th>  
-                                    <th></th>                                
-                                                                  
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Other Name</th>                                
+                                    <th>Gender</th>  
+                                    <th>DOB</th>                            
+                                    <th>Parent Phone</th>                            
+                                    <th>Nationality</th>                            
+                                    <th>State</th>                            
+                                    <th>LGA</th>                            
+                                    <th>Religion</th>                            
+                                    <th>Class</th>                            
+                                    <th>Creation Date</th>                            
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td scope="row">1</td>
-                                    <td>John Doe</td>
-                                    <td>John@gmail.com</td>
-                                    <td><a href="Profile.html" class="btn btn-secondary">
-                                        <i class="fa fa-user"></i> Profile
-                                    </a></td>
-                                    <td><a href="score_sheet.html" class="btn btn-warning">
-                                        <i class="fa fa-table"></i> Report
-                                    </a></td>
-                                    <td><a href="#" class="btn btn-danger" data-toggle="modal" data-target="#deleteStudentModal">
-                                        <i class="fa fa-times"></i> Delete
-                                    </a></td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">2</td>
-                                    <td>Brad Traversy</td>
-                                    <td>brad@gmail.com</td>
-                                    <td><a href="Profile.html" class="btn btn-secondary">
-                                        <i class="fa fa-user"></i> Profile
-                                    </a></td>
-                                    <td><a href="score_sheet.html" class="btn btn-warning">
-                                        <i class="fa fa-table"></i> Report
-                                    </a></td>
-                                    <td><a href="#" class="btn btn-danger" data-toggle="modal" data-target="#deleteStudentModal">
-                                        <i class="fa fa-times"></i> Delete
-                                    </a></td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">3</td>
-                                    <td>Kingsley Okonkwo</td>
-                                    <td>code4kings@gmail.com</td>
-                                    <td><a href="Profile.html" class="btn btn-secondary">
-                                        <i class="fa fa-user"></i> Profile
-                                    </a></td>
-                                    <td><a href="score_sheet.html" class="btn btn-warning">
-                                        <i class="fa fa-table"></i> Report
-                                    </a></td>
-                                    <td><a href="#" class="btn btn-danger" data-toggle="modal" data-target="#deleteStudentModal">
-                                        <i class="fa fa-times"></i> Delete
-                                    </a></td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">4</td>
-                                    <td>Stanley John</td>
-                                    <td>papi@gmail.com</td>
-                                    <td><a href="Profile.html" class="btn btn-secondary">
-                                        <i class="fa fa-user"></i> Profile
-                                    </a></td>
-                                    <td><a href="score_sheet.html" class="btn btn-warning">
-                                        <i class="fa fa-table"></i> Report
-                                    </a></td>
-                                    <td><a href="#" class="btn btn-danger" data-toggle="modal" data-target="#deleteStudentModal">
-                                        <i class="fa fa-times"></i> Delete
-                                    </a></td>
-                                </tr>
-                            </tbody>
                         </table>
-                        <nav class="ml-4">
-                            <ul class="pagination">
-                                <li class="page-item disabled"><a href="#" class="page-link">Previous</a></li>
-                                <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                                <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                <li class="page-item"><a href="#" class="page-link">3</a></li>
-                                <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                            </ul>
-                        </nav>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-dark text-white mt-5 p-5" id="main-footer">
+    <footer class="bg-dark text-white pt-3 mt-5" id="main-footer">
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -232,194 +172,37 @@
     </footer>
     </div>
     
+<script type="text/javascript">
+		$(document).ready(function() {
+	    // 	// $('.listing').DataTable();
+	    // 	// $('select').material_select();
 
-    <!-- POST MODAL -->
-     <div class="modal fade" id="addPostModal">
-         <div class="modal-dialog modal-lg">
-             <div class="modal-content">
-                 <div class="modal-header bg-primary text-white">
-                     <h5 class="modal-title">Add Student</h5>
-                     <button class="close" data-dismiss="modal"><span>&times;</span></button>
-                 </div>
-                 <div class="modal-body">
-                     <form>
-                         <div class="row">
-                            <div class="col-sm-3">
-                                <h3>Your Avatar</h3>
-                                <img src="img/avatar.png" alt="profile picture" class="d-block img-fluid mb-3">
-                                <button class="btn btn-block btn-primary">Edit Image</button>
-                            </div>
-                        </div>
-                        <div class="row">
-                         <div class="form-group col-sm-4">
-                              <label for="title">Registration Number</label>
-                              <input type="text" class="form-control">
-                          </div>
-                         
-                            <div class="form-group col-sm-4">
-                              <label for="title">First Name</label>
-                              <input type="text" class="form-control">
-                          </div>
-                            <div class="form-group col-sm-4">
-                              <label for="title">Surname</label>
-                              <input type="text" class="form-control">
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="form-group col-sm-4">
-                              <label for="title">Other Name</label>
-                              <input type="text" class="form-control">
-                          </div>
-                           <div class="form-group col-sm-4">
-                              <label for="category">Nationality</label>
-                              <select type="text" class="form-control">
-                              </select>
-                          </div>
-                          <div class="form-group col-sm-4">
-                              <label for="category">State</label>
-                              <select type="text" class="form-control">
-                              </select>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="form-group col-sm-4">
-                              <label for="category">LGA</label>
-                              <select type="text" class="form-control">
-                              </select>
-                          </div>
-                           <div class="form-group col-sm-4">
-                              <label for="category">Religion</label>
-                              <select type="text" class="form-control">
-                              </select>
-                          </div>
-                          <div class="form-group col-sm-4">
-                              <label for="category">Gender</label>
-                              <select type="text" class="form-control">
-                              </select>
-                          </div>
-                        </div>
-                        <div class="row">
-                         <div class="form-group col-sm-4">
-                              <label for="title">DOB</label>
-                              <input type="text" class="form-control">
-                          </div>
-                         
-                            <div class="form-group col-sm-4">
-                              <label for="title">Parent Phone</label>
-                              <input type="text" class="form-control">
-                          </div>
-                            <div class="form-group col-sm-4">
-                              <label for="title">Address</label>
-                              <input type="text" class="form-control">
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="form-group col-sm-4">
-                              <label for="category">Session</label>
-                              <select type="text" class="form-control">
-                              </select>
-                          </div>
-                           <div class="form-group col-sm-4">
-                              <label for="category">Class</label>
-                              <select type="text" class="form-control">
-                              </select>
-                          </div>
-                          <div class="form-group col-sm-4">
-                              <label for="category">Form Master</label>
-                              <select type="text" class="form-control">
-                              </select>
-                          </div>
-                        </div>
-                     </form>
-                 </div>
-                 <div class="modal-footer">
-                     <button class="btn btn-secondary" data-dismiss="modal">Close</button>
-                     <button class="btn btn-primary" data-dismiss="modal">Save Changes</button>
-                 </div>
-             </div>
-         </div>
-     </div>
-     <!-- USER MODAL -->
-     <div class="modal fade" id="addUserModal">
-         <div class="modal-dialog modal-lg">
-             <div class="modal-content">
-                 <div class="modal-header bg-warning text-white">
-                     <h5 class="modal-title">Add User</h5>
-                     <button class="close" data-dismiss="modal"><span>&times;</span></button>
-                 </div>
-                 <div class="modal-body">
-                     <form>
-                          <div class="form-group">
-                              <label for="name">Name</label>
-                              <input type="text" class="form-control">
-                          </div>
-                            <div class="form-group">
-                              <label for="email">Email</label>
-                              <input type="email" class="form-control">
-                          </div>
-                            <div class="form-group">
-                              <label for="password">Password</label>
-                              <input type="password" class="form-control">
-                          </div>
-                            <div class="form-group">
-                              <label for="password">Confirm Password</label>
-                              <input type="password" class="form-control">
-                          </div>
-                     </form>
-                 </div>
-                 <div class="modal-footer">
-                     <button class="btn btn-secondary" data-dismiss="modal">Close</button>
-                     <button class="btn btn-warning" data-dismiss="modal">Save Changes</button>
-                 </div>
-             </div>
-         </div>
-     </div>
-
-      <!-- DELETE STUDENT MODAL -->
-        <div class="modal fade" id="deleteStudentModal">
-         <div class="modal-dialog modal-lg">
-             <div class="modal-content">
-                 <div class="modal-header bg-primary text-white">
-                     <h5 class="modal-title">Confirm Deletion</h5>
-                     <button class="close" data-dismiss="modal"><span>&times;</span></button>
-                 </div>
-                 <div class="modal-body">
-                     <form>
-                        <div class="row">
-                          <div class="form-group col-sm-4">
-                              <label for="category">Session</label>
-                              <input type="text"  class="form-control">
-                          </div>
-                           <div class="form-group col-sm-4">
-                              <label for="category">Class</label>
-                              <input type="text" class="form-control" value="">
-                          </div>
-                            <div class="form-group col-sm-4">
-                              <label for="category">Student</label>
-                              <input type="text" class="form-control" value="Stanley John">
-                          </div>
-                        </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button class="btn btn-danger" data-dismiss="modal">Confirm Delete</button>
-                    </div>
-                 </div>
-             </div>
-         </div>
-
-
-    <!-- <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script> -->
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	    	$(function() {
+			    $('#student-table').DataTable({
+			        processing: true,
+			        serverSide: true,
+                    ajax: "{{ url('/student/ajax/search') }}",
+			        columns: [
+			            { data: 'id', name: 'id'},
+			            {data: 'firstname', name: 'firstname'},
+			            { data: 'lastname', name: 'lastname' },
+			            { data: 'othername', name: 'othername' },
+			            { data: 'gender', name: 'gender' },
+			            { data: 'DOB', name: 'DOB' },
+			            { data: 'mobile_number', name: 'mobile_number' },
+			            { data: 'nationality', name: 'nationality' },
+			            { data: 'state', name: 'state' },
+			            { data: 'LGA', name: 'LGA' },
+			            { data: 'religion', name: 'religion' },
+			            { data: 'class_id', name: 'class_id' },
+			            { data: 'created_at', name: 'created_at' },
+			        ]
+			    });
+			});
+		});
+	</script>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-<!-- jQuery -->
-<script src="//code.jquery.com/jquery.js"></script>
-<!-- DataTables -->
-<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 </body>
 </html>

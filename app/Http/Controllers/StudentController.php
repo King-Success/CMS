@@ -9,7 +9,7 @@ use Auth;
 use Validator;
 use Redirect;
 use Input;
-use Datatables;
+use Yajra\Datatables\Datatables;
 
 class StudentController extends Controller
 {
