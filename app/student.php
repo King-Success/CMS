@@ -12,7 +12,7 @@ class student extends Model
         return $this->belongsTo('App\class');
     }
 
-    public function subject() {
-        return $this->belongsToMany('App\subject');
+    public function subjectScores() {
+        return $this->hasMany('App\subjectScores');
     }
 }
