@@ -19,7 +19,45 @@ class StudentController extends Controller
     * @return \Illuminate\Http\JsonResponse
     */
     public function yajraAjaxSearch() {
-        return Datatables::of(Student::all())->make(true);
+
+        $rawStudents = Student::all();
+        $students = array();
+        foreach($rawStudents as $rawStudent){
+            $student = array();
+
+            $id = $rawStudent['id'];
+            $firstName = $rawStudent['firstname'];
+            $lastName = $rawStudent['lastname'];
+            $otherName = $rawStudent['othername'];
+            $gender = $rawStudent['gender'];
+            $mobileNumber = $rawStudent['mobile_number'];
+            $DOB = $rawStudent['DOB'];
+            $nationality = $rawStudent['nationality'];
+            $creation = $rawStudent['created_at'];
+
+            // construct a fullname variable here
+            $fullName = $firstName. ' ' . $otherName . ' '. $lastName;
+            // inject records into student array
+            $student['id'] = $id;
+            $student['fullname'] = $fullName;
+            $student['gender'] = $gender;
+            $student['mobile_number'] = $mobileNumber;
+            $student['DOB'] = $DOB;
+            $student['nationality'] = $nationality;
+            $student['created_at'] = $creation;
+            //push student array into students array
+            array_push($students, $student);
+
+        }
+        return Datatables::of($students)
+                ->editColumn('created_at', function($data){
+                    return date('d F Y', strtotime($data['created_at']));
+                })
+                ->addColumn('actions', function($data){
+                     return "<a class='btn btn-primary' href='/student/" . $data['id'] . "/scoresheet'>Scores</a> <a class='btn btn-danger' href='/student/" . $data['id'] . "/delete'>Delete</a>";
+                })
+                ->rawColumns(['actions'])
+                ->make(true);
     }
 
     /**
@@ -95,7 +133,7 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**

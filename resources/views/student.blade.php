@@ -140,18 +140,16 @@
                             <thead class="thead-inverse">
                                 <tr>
                                     <th>#</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Other Name</th>                                
+                                    <th>Fullname</th>                               
                                     <th>Gender</th>  
                                     <th>DOB</th>                            
                                     <th>Parent Phone</th>                            
                                     <th>Nationality</th>                            
-                                    <th>State</th>                            
-                                    <th>LGA</th>                            
-                                    <th>Religion</th>                            
-                                    <th>Class</th>                            
-                                    <th>Creation Date</th>                            
+                                    <!-- <th>State</th>                             -->
+                                    <!-- <th>LGA</th>                             -->
+                                     <!-- <th>Religion</th>                              -->
+                                      <th>Creation Date</th>                              
+                                     <th>Actions</th>                             
                                 </tr>
                             </thead>
                         </table>
@@ -184,18 +182,16 @@
                     ajax: "{{ url('/student/ajax/search') }}",
 			        columns: [
 			            { data: 'id', name: 'id'},
-			            {data: 'firstname', name: 'firstname'},
-			            { data: 'lastname', name: 'lastname' },
-			            { data: 'othername', name: 'othername' },
+			            {data: 'fullname', name: 'fullname'},
 			            { data: 'gender', name: 'gender' },
 			            { data: 'DOB', name: 'DOB' },
 			            { data: 'mobile_number', name: 'mobile_number' },
 			            { data: 'nationality', name: 'nationality' },
-			            { data: 'state', name: 'state' },
-			            { data: 'LGA', name: 'LGA' },
-			            { data: 'religion', name: 'religion' },
-			            { data: 'class_id', name: 'class_id' },
-			            { data: 'created_at', name: 'created_at' },
+			            // { data: 'state', name: 'state' },
+			            // { data: 'class_id', name: 'class_id' },
+                        { data: 'created_at', name: 'created_at' },
+			            { data: 'actions', name: 'actions' }
+                        
 			        ]
 			    });
 			});

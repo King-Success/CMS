@@ -20,6 +20,8 @@ Route::middleware('auth')->group(function(){
     Route::get('/student/create', 'StudentController@create');
     Route::post('/student/create', 'StudentController@store');
     Route::get('/student/ajax/search', 'StudentController@yajraAjaxSearch');
+    Route::get('/student/{id}/scoresheet', 'StudentController@show');
+    Route::get('/student/{id}/delete', 'StudentController@delete');
     Route::get('/logout', 'Auth\LoginController@Logout');
     Route::get('/home', function(){ return view('home'); });
 });
