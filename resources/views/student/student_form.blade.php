@@ -13,7 +13,7 @@
     <!-- <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap.css"> -->
     <!-- custom style sheet here -->
-    <link rel="stylesheet" href="css/style.css">
+    <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css">
    <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -15,7 +15,8 @@
     <!-- DataTables -->
     <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
     <!-- custom style sheet here -->
-    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css">
    <!DOCTYPE html>
 <html lang="en">
 <head>

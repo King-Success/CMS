@@ -18,7 +18,7 @@ class StudentController extends Controller
     *
     * @return \Illuminate\Http\JsonResponse
     */
-    public function yajraAjaxSearch() {
+    public function studentDatatable() {
 
         $rawStudents = Student::all();
         $students = array();
@@ -61,6 +61,16 @@ class StudentController extends Controller
     }
 
     /**
+    * Process datatables ajax request.
+    *
+    * @return \Illuminate\Http\JsonResponse
+    */
+
+    public function ScoresDatatable(){
+        
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -69,7 +79,7 @@ class StudentController extends Controller
     {
         $user = Auth::user();
         if($user->isAdmin || $user->isStaff){
-            return view('student');
+            return view('student.student');
         }
         return Redirect::to('/home');
     }
@@ -156,7 +166,7 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
@@ -167,6 +177,16 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+            if(Auth::user()->isAdmin){
+               $response = Student::where('id', $id)->delete(); 
+               if(!$response) {
+                   return Redirect::to('/student')
+                   ->with('status', 'Failed to delete');
+               }
+               return Redirect::to('/student')
+                ->with('status', 'Deleted Successfully');
+            }
+            return Redirect::to('/student')
+                ->with('status', 'Insufficient priviledge');
     }
 }

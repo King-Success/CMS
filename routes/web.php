@@ -19,9 +19,12 @@ Route::middleware('auth')->group(function(){
     Route::get('/student', 'StudentController@index');
     Route::get('/student/create', 'StudentController@create');
     Route::post('/student/create', 'StudentController@store');
-    Route::get('/student/ajax/search', 'StudentController@yajraAjaxSearch');
+    Route::get('/student/ajax/search', 'StudentController@studentDatatable');
     Route::get('/student/{id}/scoresheet', 'StudentController@show');
-    Route::get('/student/{id}/delete', 'StudentController@delete');
+    Route::get('/student/{id}/delete', 'StudentController@destroy');
+    Route::get('/scores', function() {
+        return view('student.score_form');
+    });
     Route::get('/logout', 'Auth\LoginController@Logout');
     Route::get('/home', function(){ return view('home'); });
 });
