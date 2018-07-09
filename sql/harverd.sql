@@ -51,3 +51,8 @@ NULL, NULL), (NULL, 'JSS 3', NULL, NULL), (NULL, 'SSS 1', NULL, NULL), (NULL, 'S
 
  INSERT INTO `class_options` (`id`, `name`, `created_at`, `updated_at`) VALUES (NULL, 'A', NULL, NULL), (NULL, 'B', NULL,
   NULL), (NULL, 'C', NULL, NULL), (NULL, 'D', NULL, NULL), (NULL, 'E', NULL, NULL);
+
+
+INSERT INTO `subject_scores` (`id`, `student_id`, `subject_id`, `class_id`, `class_options_id`, `teacher_id`, 
+`session_id`, `term_id`, `CA1`, `CA2`, `CA3`, `CA4`, `CA5`, `exam`, `total`, `position`, `created_at`, `updated_at`) 
+VALUES (NULL, '1', '1', '6', '1', '1', '1', '2', '10', '6', '3', '4', NULL, '70', '93', '1', NULL, NULL);

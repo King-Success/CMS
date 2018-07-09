@@ -106,14 +106,13 @@
             </div>
         </div>
     </section>
-
     <!-- Users -->
     <section id="posts">
         <div class="container-fluid">
             <div class="row">
                 <div class="col">
                     <div class="card">
-                        <table class="table table-striped">
+                        <table class="table table-striped " id="score_form">
                             <thead class="thead-inverse">
                                 <tr>
                                     <th>#</th>
@@ -122,29 +121,30 @@
                                     <th>2 CA</th>  
                                     <th>3 CA</th>                                
                                     <th>4 CA</th>                                
+                                    <th>5 CA</th>                                
                                     <th>Exam</th>                                
-                                    <th></th>                                 
-                                    <th></th>                                 
+                                    <th>Total</th>                                 
+                                    <th>Position</th>                                 
+                                    <th>Teacher</th>                                 
                                                                   
                                 </tr>
                             </thead>
                             <tbody>
+                            @foreach($data as $item)
                                 <tr>
                                     <td scope="row">1</td>
                                     <td class="col-5">John Doe</td>
-                                    <td ><input class=""  type="text" value=""></td>
-                                    <td ><input class="" type="text" value=""></td>
-                                    <td ><input class="" type="text" value=""></td>
-                                    <td ><input class="" type="text" value=""></td>
-                                    <td ><input class="" type="text" value=""></td>
-                                    <td ><a href="Profile.html" class="btn btn-small btn-secondary">
-                                        <i class="fa fa-save"></i> Save
-                                    </a></td>
-                                    <td><a href="details.html" class="btn btn-danger">
-                                        <i class="fa fa-times"></i> Delete
-                                    </a></td>
+                                    <td ><input class="text-center" type="text" name="CA1" value="<?php echo $item['CA1'] ?>"></td>
+                                    <td ><input class="text-center" type="text" name="CA2" value="<?php echo $item['CA2'] ?>"></td>
+                                    <td ><input class="text-center" type="text" name="CA3" value="<?php echo $item['CA3'] ?>"></td>
+                                    <td ><input class="text-center" type="text" name="CA4" value="<?php echo $item['CA4'] ?>"></td>
+                                    <td ><input class="text-center" type="text" name="CA5" value="<?php echo $item['CA5'] ?>"></td>
+                                    <td ><input class="text-center" type="text" name="exam" value="<?php echo $item['exam'] ?>"></td>
+                                    <td class="text-center"><?php echo $item['total'] ?></td>
+                                    <td class="text-center"><?php echo$item['position'] ?></td>
+                                    <td class="text-center"><?php echo $item['teacher'] ?></td>
                                 </tr>
-                                
+                            @endforeach
                             </tbody>
                         </table>
                         <nav class="ml-4">

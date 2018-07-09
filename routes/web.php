@@ -20,7 +20,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/student/create', 'StudentController@create');
     Route::post('/student/create', 'StudentController@store');
     Route::get('/student/ajax/search', 'StudentController@studentDatatable');
-    Route::get('/student/{id}/scoresheet/{session}/{term}', 'StudentController@showSubjectScores');
+    Route::get('/student/{id}/scoresheet/{session}/{term}', 'SubjectScoresController@show');
     Route::get('/student/{id}/delete', 'StudentController@destroy');
     Route::get('/scores', function() {
         return view('student.score_form');
