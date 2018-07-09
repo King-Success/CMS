@@ -88,7 +88,10 @@ class SubjectScoresController extends Controller
             ])
             ->get();
             return view('student.score_form')
-                    ->with('data', $subjectScores);
+                    ->with('data', $subjectScores)
+                    ->with('id', $id)
+                    ->with('session', $session)
+                    ->with('term', $term);
 
             
         }
@@ -115,11 +118,9 @@ class SubjectScoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, $session, $term)
     {
-        SubjectScores::find($id)
-            ->update($request)
-            ->save();
+        dd('Yesssss');
     }
 
     /**

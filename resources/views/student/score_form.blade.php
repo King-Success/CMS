@@ -112,7 +112,8 @@
             <div class="row">
                 <div class="col">
                     <div class="card">
-                       {!! Form::open(['action' => ['SubjectScoresController@update', 'method'=>'POST', 1, 1, 1]]) !!}
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/student/1/scoresheet/1/1/update') }}">
+                        {!! csrf_field() !!}
                         <table class="table table-striped " id="score_form">
                             <thead class="thead-inverse">
                                 <tr>
@@ -130,25 +131,27 @@
                                                                   
                                 </tr>
                             </thead>
+                        @foreach($data as $item)
                             <tbody>
-                            @foreach($data as $item)
                                 <tr>
                                     <td scope="row">1</td>
                                     <td class="col-5">John Doe</td>
-                                    <td ><input class="text-center" type="text" name="CA1" value="<?php echo $item['CA1'] ?>"></td>
-                                    <td ><input class="text-center" type="text" name="CA2" value="<?php echo $item['CA2'] ?>"></td>
-                                    <td ><input class="text-center" type="text" name="CA3" value="<?php echo $item['CA3'] ?>"></td>
-                                    <td ><input class="text-center" type="text" name="CA4" value="<?php echo $item['CA4'] ?>"></td>
-                                    <td ><input class="text-center" type="text" name="CA5" value="<?php echo $item['CA5'] ?>"></td>
-                                    <td ><input class="text-center" type="text" name="exam" value="<?php echo $item['exam'] ?>"></td>
+                                    <td ><input class="text-center" type="text" name="ca1[]" value="<?php echo $item['CA1'] ?>"></td>
+                                    <td ><input class="text-center" type="text" name="ca2[]" value="<?php echo $item['CA2'] ?>"></td>
+                                    <td ><input class="text-center" type="text" name="ca3[]" value="<?php echo $item['CA3'] ?>"></td>
+                                    <td ><input class="text-center" type="text" name="ca4[]" value="<?php echo $item['CA4'] ?>"></td>
+                                    <td ><input class="text-center" type="text" name="ca5[]" value="<?php echo $item['CA5'] ?>"></td>
+                                    <td ><input class="text-center" type="text" name="exam[]" value="<?php echo $item['exam'] ?>"></td>
                                     <td class="text-center"><?php echo $item['total'] ?></td>
                                     <td class="text-center"><?php echo$item['position'] ?></td>
-                                    <td class="text-center"><?php echo $item['teacher'] ?></td>
                                 </tr>
-                            @endforeach
                             </tbody>
+                        @endforeach
                         </table>
-                        {!! Form::close() !!}
+                        <center><input type="submit" class="btn btn-lg btn-default" value="Submit"></center>
+                        </form>
+
+
                         <nav class="ml-4">
                             <ul class="pagination">
                                 <li class="page-item disabled"><a href="#" class="page-link">Previous</a></li>
