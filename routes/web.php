@@ -21,7 +21,11 @@ Route::middleware('auth')->group(function(){
     Route::post('/student/create', 'StudentController@store');
     Route::get('/student/ajax/search', 'StudentController@studentDatatable');
     Route::get('/student/{id}/scoresheet/{session}/{term}', 'SubjectScoresController@show');
+    Route::get('/student/{id}/scoresheet/{session}/{term}/update', 'SubjectScoresController@update');
     Route::get('/student/{id}/delete', 'StudentController@destroy');
+//     Route::post('student/{id}/scor', [
+//     'uses' => 'AboutController@show'
+//   ]);
     Route::get('/scores', function() {
         return view('student.score_form');
     });

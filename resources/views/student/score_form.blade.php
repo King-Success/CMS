@@ -112,6 +112,7 @@
             <div class="row">
                 <div class="col">
                     <div class="card">
+                       {!! Form::open(['action' => ['SubjectScoresController@update', 'method'=>'POST', 1, 1, 1]]) !!}
                         <table class="table table-striped " id="score_form">
                             <thead class="thead-inverse">
                                 <tr>
@@ -147,6 +148,7 @@
                             @endforeach
                             </tbody>
                         </table>
+                        {!! Form::close() !!}
                         <nav class="ml-4">
                             <ul class="pagination">
                                 <li class="page-item disabled"><a href="#" class="page-link">Previous</a></li>

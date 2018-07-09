@@ -54,7 +54,7 @@ class SubjectScoresController extends Controller
     public function show($id, $session, $term)
     {
          $user = Auth::user();
-        if($user->isAdmin || $user->isStaf){
+        if($user->isAdmin || $user->isStaff){
             $subjectScores = SubjectScores::leftJoin('students', 'subject_scores.student_id', '=', 'students.id')
             ->leftJoin('subjects', 'subject_scores.subject_id', '=', 'subjects.id')
             ->leftJoin('classes', 'subject_scores.class_id', '=', 'classes.id')
@@ -87,12 +87,14 @@ class SubjectScoresController extends Controller
                 'terms.name as term'
             ])
             ->get();
-
             return view('student.score_form')
                     ->with('data', $subjectScores);
 
             
         }
+
+        return redirect::to('/home')
+            ->with('status', 'Insufficient priviledge');
     }
 
     /**
