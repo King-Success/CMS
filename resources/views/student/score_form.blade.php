@@ -112,8 +112,7 @@
             <div class="row">
                 <div class="col">
                     <div class="card">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/student/1/scoresheet/1/1/update') }}">
-                        {!! csrf_field() !!}
+                    {!! Form::open(['url' => '/student/' . $id . '/scoresheet/' . $session . '/'. $term . '/update']) !!}
                         <table class="table table-striped " id="score_form">
                             <thead class="thead-inverse">
                                 <tr>
@@ -149,7 +148,7 @@
                         @endforeach
                         </table>
                         <center><input type="submit" class="btn btn-lg btn-default" value="Submit"></center>
-                        </form>
+                        {!! Form::close() !!}
 
 
                         <nav class="ml-4">

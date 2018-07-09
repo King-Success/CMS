@@ -120,7 +120,7 @@ class SubjectScoresController extends Controller
      */
     public function update(Request $request, $id, $session, $term)
     {
-        dd('Yesssss');
+        
     }
 
     /**
