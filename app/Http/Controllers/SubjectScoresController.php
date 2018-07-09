@@ -66,6 +66,7 @@ class SubjectScoresController extends Controller
             ->where('sessions.id', '=', $session)
             ->where('terms.id', '=', $term)
             ->select([
+                'subject_scores.id',
                 'subject_scores.CA1',
                 'subject_scores.CA2',
                 'subject_scores.CA3',
@@ -120,7 +121,7 @@ class SubjectScoresController extends Controller
      */
     public function update(Request $request, $id, $session, $term)
     {
-        
+        dd($request->all());
     }
 
     /**

@@ -133,7 +133,7 @@
                         @foreach($data as $item)
                             <tbody>
                                 <tr>
-                                    <td scope="row">1</td>
+                                    <td scope="row"><input type="hidden" name=id[] value="<?php echo $item['id'] ?>"><?php echo $item['id'] ?></td>
                                     <td class="col-5">John Doe</td>
                                     <td ><input class="text-center" type="text" name="ca1[]" value="<?php echo $item['CA1'] ?>"></td>
                                     <td ><input class="text-center" type="text" name="ca2[]" value="<?php echo $item['CA2'] ?>"></td>
