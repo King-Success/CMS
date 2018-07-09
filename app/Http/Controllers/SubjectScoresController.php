@@ -66,7 +66,7 @@ class SubjectScoresController extends Controller
             ->where('sessions.id', '=', $session)
             ->where('terms.id', '=', $term)
             ->select([
-                'subject_scores.id',
+                'subject_scores.id as subject_record_id',
                 'subject_scores.CA1',
                 'subject_scores.CA2',
                 'subject_scores.CA3',
@@ -90,9 +90,7 @@ class SubjectScoresController extends Controller
             ->get();
             return view('student.score_form')
                     ->with('data', $subjectScores)
-                    ->with('id', $id)
-                    ->with('session', $session)
-                    ->with('term', $term);
+                    ->with('id', $id);
 
             
         }
@@ -119,9 +117,35 @@ class SubjectScoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, $session, $term)
+    public function update(Request $request, $id)
     {
-        dd($request->all());
+        $user = Auth::user();
+        if($user->isAdmin || $user->isStaff){
+            $inputs = $request->all();
+            $subject_record_id = $inputs['subject_record_id'];
+            $CA1 = $inputs['CA1'];
+            $CA2 = $inputs['CA2'];
+            $CA3 = $inputs['CA3'];
+            $CA4 = $inputs['CA4'];
+            $CA5 = $inputs['CA5'];
+            $exam = $inputs['exam'];
+            foreach($subject_record_id as $index => $id){
+                $subjectScore = SubjectScores::find($id);
+
+                $subjectScore->CA1 = $CA1[$index];
+                $subjectScore->CA2 = $CA2[$index];
+                $subjectScore->CA3 = $CA3[$index];
+                $subjectScore->CA4 = $CA4[$index];
+                $subjectScore->CA5 = $CA5[$index];
+                $subjectScore->exam = $exam[$index];
+
+                $subjectScore->save();
+            }
+            return redirect::to('/student')
+                ->with('status', 'Record updated successfully');
+        }
+            // return redirect::to('/')
+        
     }
 
     /**

@@ -112,12 +112,12 @@
             <div class="row">
                 <div class="col">
                     <div class="card">
-                    {!! Form::open(['url' => '/student/' . $id . '/scoresheet/' . $session . '/'. $term . '/update']) !!}
+                    {!! Form::open(['url' => '/student/' . $id . '/scoresheet/update']) !!}
                         <table class="table table-striped " id="score_form">
                             <thead class="thead-inverse">
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
+                                    <th>Subject</th>
                                     <th>1 CA</th>                                
                                     <th>2 CA</th>  
                                     <th>3 CA</th>                                
@@ -133,13 +133,13 @@
                         @foreach($data as $item)
                             <tbody>
                                 <tr>
-                                    <td scope="row"><input type="hidden" name=id[] value="<?php echo $item['id'] ?>"><?php echo $item['id'] ?></td>
-                                    <td class="col-5">John Doe</td>
-                                    <td ><input class="text-center" type="text" name="ca1[]" value="<?php echo $item['CA1'] ?>"></td>
-                                    <td ><input class="text-center" type="text" name="ca2[]" value="<?php echo $item['CA2'] ?>"></td>
-                                    <td ><input class="text-center" type="text" name="ca3[]" value="<?php echo $item['CA3'] ?>"></td>
-                                    <td ><input class="text-center" type="text" name="ca4[]" value="<?php echo $item['CA4'] ?>"></td>
-                                    <td ><input class="text-center" type="text" name="ca5[]" value="<?php echo $item['CA5'] ?>"></td>
+                                    <td scope="row"><input type="hidden" name="subject_record_id[]" value="<?php echo $item['subject_record_id'] ?>"><?php echo $item['subject_record_id'] ?></td>
+                                    <td class="col-5"><input type="hidden" name="subjects[]" value="<?php echo $item['subject'] ?>"><?php echo $item['subject'] ?></td>
+                                    <td ><input class="text-center" type="text" name="CA1[]" value="<?php echo $item['CA1'] ?>"></td>
+                                    <td ><input class="text-center" type="text" name="CA2[]" value="<?php echo $item['CA2'] ?>"></td>
+                                    <td ><input class="text-center" type="text" name="CA3[]" value="<?php echo $item['CA3'] ?>"></td>
+                                    <td ><input class="text-center" type="text" name="CA4[]" value="<?php echo $item['CA4'] ?>"></td>
+                                    <td ><input class="text-center" type="text" name="CA5[]" value="<?php echo $item['CA5'] ?>"></td>
                                     <td ><input class="text-center" type="text" name="exam[]" value="<?php echo $item['exam'] ?>"></td>
                                     <td class="text-center"><?php echo $item['total'] ?></td>
                                     <td class="text-center"><?php echo$item['position'] ?></td>
