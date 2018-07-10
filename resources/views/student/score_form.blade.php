@@ -133,16 +133,16 @@
                         @foreach($data as $item)
                             <tbody>
                                 <tr>
-                                    <td scope="row"><input type="hidden" name="subject_record_id[]" value="<?php echo $item['subject_record_id'] ?>"><?php echo $item['subject_record_id'] ?></td>
-                                    <td class="col-5"><input type="hidden" name="subjects[]" value="<?php echo $item? $item['subject'] : '' ?>"><?php echo $item['subject'] ?></td>
-                                    <td ><input class="text-center" type="text" name="CA1[]" value="<?php echo  $item['CA1'] ?>"></td>
-                                    <td ><input class="text-center" type="text" name="CA2[]" value="<?php echo $item['CA2'] ?>"></td>
-                                    <td ><input class="text-center" type="text" name="CA3[]" value="<?php echo $item['CA3'] ?>"></td>
-                                    <td ><input class="text-center" type="text" name="CA4[]" value="<?php echo $item['CA4'] ?>"></td>
-                                    <td ><input class="text-center" type="text" name="CA5[]" value="<?php echo $item['CA5'] ?>"></td>
-                                    <td ><input class="text-center" type="text" name="exam[]" value="<?php echo $item['exam'] ?>"></td>
-                                    <td class="text-center"><?php echo $item['total'] ?></td>
-                                    <td class="text-center"><?php echo$item['position'] ?></td>
+                                    <td scope="row"><input type="hidden" name="subject_record_id[]" value="<?php echo ($item['subject_record_id']) ? $item['subject_record_id'] : $item->id; ?>"><?php echo ($item['subject_record_id']) ? $item['subject_record_id'] : $item->id; ?></td>
+                                    <td class="col-5"><input type="hidden" name="subjects[]" value="<?php echo  $item['subject'] || $item->name ?>"><?php echo ($item['subject']) ? $item['subject'] : $item->name ?></td>
+                                    <td ><input class="text-center" type="text" name="CA1[]" value="<?php echo ($item['CA1']) ? $item['CA1'] : ''; ?>"></td>
+                                    <td ><input class="text-center" type="text" name="CA2[]" value="<?php echo ($item['CA2']) ? $item['CA2'] : ''; ?>"></td>
+                                    <td ><input class="text-center" type="text" name="CA3[]" value="<?php echo ($item['CA3']) ? $item['CA3'] : ''; ?>"></td>
+                                    <td ><input class="text-center" type="text" name="CA4[]" value="<?php echo ($item['CA4']) ? $item['CA4'] : ''; ?>"></td>
+                                    <td ><input class="text-center" type="text" name="CA5[]" value="<?php echo ($item['CA5']) ? $item['CA5'] : ''; ?>"></td>
+                                    <td ><input class="text-center" type="text" name="exam[]" value="<?php echo ($item['exam']) ? $item['exam'] : ''; ?>"></td>
+                                    <td class="text-center"><?php echo ($item['total']) ? $item['total'] : ''; ?></td>
+                                    <td class="text-center"><?php echo ($item['position']) ? $item['position'] : ''; ?></td>
                                 </tr>
                             </tbody>
                         @endforeach

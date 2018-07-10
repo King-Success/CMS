@@ -17,6 +17,6 @@ class subject extends Model
      }
 
      public function student() {
-         return $this->belongsToMany('App\student');
+         return $this->belongsToMany('App\student', 'student_subject', 'student_id', 'subject_id');
      }
 }

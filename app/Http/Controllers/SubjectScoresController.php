@@ -94,7 +94,9 @@ class SubjectScoresController extends Controller
             if(count($subjectScores) == 0){
                $student = Student::find($id);
                $subjects = $student->subjects;
-               dd($subjects);
+               return view('student.score_form')
+                    ->with('data', $subjects)
+                    ->with('id', $id);
             }
             //else return the exiting records for editing or display
              return view('student.score_form')
