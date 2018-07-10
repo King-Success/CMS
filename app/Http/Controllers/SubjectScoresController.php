@@ -101,11 +101,7 @@ class SubjectScoresController extends Controller
             ->get();
             //if there are no records, fetch all the subjects to be offered and display empty score fields
             if(count($subjectScores) == 0){
-               $student = Student::find($id);
-               $subjects = $student->subjects;
-               return view('scoresheet.create')
-                    ->with('data', $subjects)
-                    ->with('id', $id);
+               return redirect::to('/student/' . $id . '/scoresheet/' . $session . '/' . $term . '/create');
             }
             //else return the exiting records for editing or display
              return view('scoresheet.edit')
