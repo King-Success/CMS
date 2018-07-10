@@ -29,9 +29,18 @@ class SubjectScoresController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id, $session, $term)
     {
-        //
+        $user = Auth::user();
+        if($user->isAdmin || $user->isStaff) {
+            $student = Student::find($id);
+            $subjects = $student->subjects;
+            return view('scoresheet.create')
+                ->with('data', $subjects)
+                ->with('id', $id)
+                ->with('session', $session)
+                ->with('term', $term);
+        }
     }
 
     /**
@@ -94,12 +103,12 @@ class SubjectScoresController extends Controller
             if(count($subjectScores) == 0){
                $student = Student::find($id);
                $subjects = $student->subjects;
-               return view('student.score_form')
+               return view('scoresheet.create')
                     ->with('data', $subjects)
                     ->with('id', $id);
             }
             //else return the exiting records for editing or display
-             return view('student.score_form')
+             return view('scoresheet.edit')
                     ->with('data', $subjectScores)
                     ->with('id', $id);
             
@@ -134,6 +143,7 @@ class SubjectScoresController extends Controller
         $user = Auth::user();
         if($user->isAdmin || $user->isStaff){
             $inputs = $request->all();
+            // dd($inputs);
             $subject_record_id = $inputs['subject_record_id'];
             $CA1 = $inputs['CA1'];
             $CA2 = $inputs['CA2'];

@@ -112,7 +112,7 @@
             <div class="row">
                 <div class="col">
                     <div class="card">
-                    {!! Form::open(['url' => '/student/' . $id . '/scoresheet/update']) !!}
+                    {!! Form::open(['url' => '/student/' . $id . '/scoresheet/' . $session . '/' . $term . '/store']) !!}
                         <table class="table table-striped " id="score_form">
                             <thead class="thead-inverse">
                                 <tr>
@@ -134,7 +134,7 @@
                             <tbody>
                                 <tr>
                                     <td scope="row"><input type="hidden" name="subject_record_id[]" value="<?php echo ($item['subject_record_id']) ? $item['subject_record_id'] : $item->id; ?>"><?php echo ($item['subject_record_id']) ? $item['subject_record_id'] : $item->id; ?></td>
-                                    <td class="col-5"><input type="hidden" name="subjects[]" value="<?php echo  $item['subject'] || $item->name ?>"><?php echo ($item['subject']) ? $item['subject'] : $item->name ?></td>
+                                    <td class="col-5"><input type="hidden" name="subjects[]" value="<?php echo ($item['subject']) ? $item['subject'] : $item->name ?>"><?php echo ($item['subject']) ? $item['subject'] : $item->name ?></td>
                                     <td ><input class="text-center" type="text" name="CA1[]" value="<?php echo ($item['CA1']) ? $item['CA1'] : ''; ?>"></td>
                                     <td ><input class="text-center" type="text" name="CA2[]" value="<?php echo ($item['CA2']) ? $item['CA2'] : ''; ?>"></td>
                                     <td ><input class="text-center" type="text" name="CA3[]" value="<?php echo ($item['CA3']) ? $item['CA3'] : ''; ?>"></td>

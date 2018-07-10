@@ -20,8 +20,10 @@ Route::middleware('auth')->group(function(){
     Route::get('/student/create', 'StudentController@create');
     Route::post('/student/create', 'StudentController@store');
     Route::get('/student/ajax/search', 'StudentController@studentDatatable');
-    Route::get('/student/{id}/scoresheet/{session}/{term}', 'SubjectScoresController@show');
+    Route::get('/student/{id}/scoresheet/{session}/{term}/edit', 'SubjectScoresController@show');
+    Route::get('/student/{id}/scoresheet/{session}/{term}/create', 'SubjectScoresController@create');
     Route::post('/student/{id}/scoresheet/update', 'SubjectScoresController@update');
+    Route::post('/student/{id}/scoresheet/{session}/{term}/store', 'SubjectScoresController@store');
     Route::get('/student/{id}/delete', 'StudentController@destroy');
 //     Route::post('student/{id}/scor', [
 //     'uses' => 'AboutController@show'

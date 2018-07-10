@@ -80,7 +80,7 @@ class StudentController extends Controller
     {
         $user = Auth::user();
         if($user->isAdmin || $user->isStaff){
-            return view('student.student');
+            return view('student.index');
         }
         return Redirect::to('/home');
     }
@@ -92,7 +92,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('student_form');
+        return view('student.create');
     }
 
     /**
