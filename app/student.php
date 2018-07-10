@@ -9,7 +9,7 @@ class student extends Model
     protected $guarded = [];
 
     public function class() {
-        return $this->belongsTo('App\class');
+        return $this->belongsTo('App\studentClass');
     }
 
     public function subjectScores() {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Student;
 use App\SubjectScores;
+use App\Subject;
 use Auth;
 use Validator;
 use Redirect;
@@ -49,9 +50,48 @@ class SubjectScoresController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id, $session, $term)
     {
-        //
+        $user = Auth::user();
+        if($user->isAdmin || $user->isStaff){
+            $inputs = $request->all();
+            // dd($inputs);
+            //get the the data sent through the create form
+            $subject_id = $inputs['subject_id'];
+            $CA1 = $inputs['CA1'];
+            $CA2 = $inputs['CA2'];
+            $CA3 = $inputs['CA3'];
+            $CA4 = $inputs['CA4'];
+            $CA5 = $inputs['CA5'];
+            $exam = $inputs['exam'];
+            //get the data required but not sent through the create from
+            $student = Student::find($id); 
+            $student_id = $student->id;
+            $class_id = $student->class->id;
+            // $class_option_id = $student->classOption->id;
+
+            foreach($subject_id as $index => $id){
+                $subjectScore = new SubjectScores;
+
+                $subjectScore->student_id = $student_id;
+                $subjectScore->subject_id = $id;
+                $subjectScore->class_id = $class_id;
+                // $subjectScore->class_options_id = $class_option_id;
+                $subjectScore->session_id = $session;
+                $subjectScore->term_id = $term;
+                $subjectScore->CA1 = $CA1[$index];
+                $subjectScore->CA2 = $CA2[$index];
+                $subjectScore->CA3 = $CA3[$index];
+                $subjectScore->CA4 = $CA4[$index];
+                $subjectScore->CA5 = $CA5[$index];
+                $subjectScore->exam = $exam[$index];
+
+                $subjectScore->save();
+            }
+            dd($student->subjectScores);
+            return redirect::to('/student')
+                ->with('status', 'Record updated successfully');
+        }
     }
 
     /**

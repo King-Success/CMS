@@ -123,9 +123,7 @@
                                     <th>3 CA</th>                                
                                     <th>4 CA</th>                                
                                     <th>5 CA</th>                                
-                                    <th>Exam</th>                                
-                                    <th>Total</th>                                 
-                                    <th>Position</th>                                 
+                                    <th>Exam</th>                                      
                                     <th>Teacher</th>                                 
                                                                   
                                 </tr>

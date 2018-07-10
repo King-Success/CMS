@@ -55,7 +55,7 @@ class StudentController extends Controller
                     return date('d F Y', strtotime($data['created_at']));
                 })
                 ->addColumn('actions', function($data){
-                     return "<a class='btn btn-primary' href='/student/" . $data['id'] . "/scoresheet/1/1'>Scores</a> <a class='btn btn-danger' href='/student/" . $data['id'] . "/delete'>Delete</a>";
+                     return "<a class='btn btn-primary' href='/student/" . $data['id'] . "/scoresheet/1/1/edit'>Scores</a> <a class='btn btn-danger' href='/student/" . $data['id'] . "/delete'>Delete</a>";
                 })
                 ->rawColumns(['actions'])
                 ->make(true);
