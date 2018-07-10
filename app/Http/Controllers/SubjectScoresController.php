@@ -77,6 +77,7 @@ class SubjectScoresController extends Controller
                 $subjectScore->subject_id = $id;
                 $subjectScore->class_id = $class_id;
                 // $subjectScore->class_options_id = $class_option_id;
+                $subjectScore->teacher_id = $id;
                 $subjectScore->session_id = $session;
                 $subjectScore->term_id = $term;
                 $subjectScore->CA1 = $CA1[$index];
@@ -86,12 +87,20 @@ class SubjectScoresController extends Controller
                 $subjectScore->CA5 = $CA5[$index];
                 $subjectScore->exam = $exam[$index];
 
-                $subjectScore->save();
+                $saved = $subjectScore->save();
             }
-            dd($student->subjectScores);
-            return redirect::to('/student')
-                ->with('status', 'Record updated successfully');
+            if($saved){
+                return redirect::to('/student')
+                    ->with('status', 'Record Created successfully');
+            }
+
+            return redirect::to('/student/' . $id . '/scoresheet/' . $session . '/' . $term . '/create')
+                ->with('status', 'Record Creation Failed')
+                ->withInput(Input::all());
+            
         }
+        return redirect::to('/student')
+            ->with('status', 'Insufficient Privilege');
     }
 
     /**
@@ -153,7 +162,7 @@ class SubjectScoresController extends Controller
         }
 
         return redirect::to('/home')
-            ->with('status', 'Insufficient priviledge');
+            ->with('status', 'Insufficient privilege');
     }
 
     /**
