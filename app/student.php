@@ -15,4 +15,8 @@ class student extends Model
     public function subjectScores() {
         return $this->hasMany('App\subjectScores');
     }
+
+    public function subjects() {
+        return $this->belongsToMany('App\subject');
+    }
 }

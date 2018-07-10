@@ -53,8 +53,10 @@ class SubjectScoresController extends Controller
      */
     public function show($id, $session, $term)
     {
+        // check if the current authenticated user has priviledge to view this resource
          $user = Auth::user();
         if($user->isAdmin || $user->isStaff){
+            //if yes collect all the scores for the various subjects plus additional details from other tables
             $subjectScores = SubjectScores::leftJoin('students', 'subject_scores.student_id', '=', 'students.id')
             ->leftJoin('subjects', 'subject_scores.subject_id', '=', 'subjects.id')
             ->leftJoin('classes', 'subject_scores.class_id', '=', 'classes.id')
@@ -88,9 +90,17 @@ class SubjectScoresController extends Controller
                 'terms.name as term'
             ])
             ->get();
-            return view('student.score_form')
+            //if there are no records, fetch all the subjects to be offered and display empty score fields
+            if(count($subjectScores) == 0){
+               $student = Student::find($id);
+               $subjects = $student->subjects;
+               dd($subjects);
+            }
+            //else return the exiting records for editing or display
+             return view('student.score_form')
                     ->with('data', $subjectScores)
                     ->with('id', $id);
+            
 
             
         }

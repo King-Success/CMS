@@ -134,8 +134,8 @@
                             <tbody>
                                 <tr>
                                     <td scope="row"><input type="hidden" name="subject_record_id[]" value="<?php echo $item['subject_record_id'] ?>"><?php echo $item['subject_record_id'] ?></td>
-                                    <td class="col-5"><input type="hidden" name="subjects[]" value="<?php echo $item['subject'] ?>"><?php echo $item['subject'] ?></td>
-                                    <td ><input class="text-center" type="text" name="CA1[]" value="<?php echo $item['CA1'] ?>"></td>
+                                    <td class="col-5"><input type="hidden" name="subjects[]" value="<?php echo $item? $item['subject'] : '' ?>"><?php echo $item['subject'] ?></td>
+                                    <td ><input class="text-center" type="text" name="CA1[]" value="<?php echo  $item['CA1'] ?>"></td>
                                     <td ><input class="text-center" type="text" name="CA2[]" value="<?php echo $item['CA2'] ?>"></td>
                                     <td ><input class="text-center" type="text" name="CA3[]" value="<?php echo $item['CA3'] ?>"></td>
                                     <td ><input class="text-center" type="text" name="CA4[]" value="<?php echo $item['CA4'] ?>"></td>
