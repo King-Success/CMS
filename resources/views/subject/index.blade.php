@@ -80,7 +80,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6">
-                    <h1 class="text-center"><i class="fa fa-envelope"></i> Students</h1>
+                    <h1 class="text-center"><i class="fa fa-envelope"></i> Subjects</h1>
                 </div>
             </div>
         </div>
@@ -107,7 +107,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addPostModal">
+                    <a href="" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addSubjectModal">
                         <i class="fa fa-plus"> Add Subject</i>
                     </a>
                 </div>
@@ -159,6 +159,30 @@
     </footer>
     </div>
     
+
+         <!-- SUBJECT MODAL -->
+     <div class="modal fade" id="addSubjectModal">
+         <div class="modal-dialog modal-lg">
+             <div class="modal-content">
+                 <div class="modal-header bg-warning text-white">
+                     <h5 class="modal-title">Add Subject</h5>
+                     <button class="close" data-dismiss="modal"><span>&times;</span></button>
+                 </div>
+                 {!! Form::open(array('action' => 'SubjectController@store', 'method' => 'POST')) !!}
+                 <div class="modal-body">
+                          <div class="form-group">
+                              {!! Form::label('name', 'Name') !!}
+                              {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                          </div>
+                 </div>
+                 <div class="modal-footer">
+                     {!! Form::submit('Close', ['class' => 'btn btn-secondary', 'data-dismiss' => 'modal']) !!}
+                     {!! Form::submit('Submit', ['class' => 'btn btn-warning']) !!}
+                 </div>
+                 {!! Form::close()!!}
+             </div>
+         </div>
+     </div>
 <script type="text/javascript">
 		$(document).ready(function() {
 	    // 	// $('.listing').DataTable();

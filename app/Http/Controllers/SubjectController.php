@@ -69,7 +69,7 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('subject.create');
     }
 
     /**
@@ -80,7 +80,7 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
