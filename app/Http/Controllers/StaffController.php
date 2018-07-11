@@ -26,8 +26,8 @@ class StaffController extends Controller
             $lastName = $rawStaff['lastname'];
             $otherName = $rawStaff['othername'];
             $gender = $rawStaff['gender'];
+            $status = $rawStaff['status'];
             $mobileNumber = $rawStaff['mobile_number'];
-            $DOB = $rawStaff['DOB'];
             $nationality = $rawStaff['nationality'];
             $creation = $rawStaff['created_at'];
 
@@ -37,8 +37,8 @@ class StaffController extends Controller
             $staff['id'] = $id;
             $staff['fullname'] = $fullName;
             $staff['gender'] = $gender;
+            $staff['status'] = $status;
             $staff['mobile_number'] = $mobileNumber;
-            $staff['DOB'] = $DOB;
             $staff['nationality'] = $nationality;
             $staff['created_at'] = $creation;
             //push staff array into staffs array
