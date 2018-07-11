@@ -143,16 +143,16 @@
                             </div>
                         </div> -->
                         <div class="row">
-                         <!-- <div class="form-group col-sm-4">
-                              {!!Form::label('registration_number', 'Registration Number')!!}
-                              {!!Form::text('registration_number', null, ['class' => 'form-control'])!!}
-                          </div> -->
+                          <div class="form-group col-sm-4">
+                              {!!Form::label('staff_type', 'Staff Type')!!}
+                              {!!Form::text('staff_type_id', null, ['class' => 'form-control'])!!}
+                          </div> 
                          
-                            <div class="form-group col-sm-6">
+                            <div class="form-group col-sm-4">
                             {!!Form::label('firstname', 'First Name') !!}
                             {!!Form::text('firstname', null, ['class' => 'form-control'])!!}
                           </div>
-                            <div class="form-group col-sm-6">
+                            <div class="form-group col-sm-4">
                             {!!Form::label('lastname', 'Last Name') !!}
                             {!!Form::text('lastname', null, ['class' => 'form-control'])!!}
                           </div>
@@ -195,11 +195,13 @@
                             {!!Form::label('mobile_number', 'Phone') !!}
                             {!!Form::text('mobile_number', null, ['class' => 'form-control'])!!}
                             </div>
+
+                            <div class="form-group col-sm-4">
+                            {!!Form::label('submit', 'Submit') !!}
+                            {!!Form::submit('Create Staff', ['class' => 'btn btn-primary d-block'])!!}
+                            </div>
                         </div>
                         <div class="row">
-                          <div class="form-group col-sm-12">
-                            {!!Form::submit('Create Staff', ['class' => 'btn btn-primary d-block'])!!}
-                          </div>
                         </div>
                     {!! Form::close() !!}
                         <nav class="ml-4">

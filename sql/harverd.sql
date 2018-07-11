@@ -76,3 +76,6 @@ INSERT INTO `students` (`id`, `firstname`, `lastname`, `othername`, `gender`, `D
     NULL, NULL), (NULL, '1', '2', NULL, NULL), (NULL, '1', '3', NULL, NULL), (NULL, '1', '4', NULL, NULL), (NULL, '1', 
     '5', NULL, NULL), (NULL, '1', '6', NULL, NULL), (NULL, '2', '1', NULL, NULL), (NULL, '2', '2', NULL, NULL), (NULL, 
     '2', '3', NULL, NULL), (NULL, '2', '4', NULL, NULL), (NULL, '2', '5', NULL, NULL), (NULL, '2', '6', NULL, NULL);
+
+    INSERT INTO `staff_types` (`id`, `name`, `created_at`, `updated_at`) VALUES (NULL, 'Academic', NULL, NULL), (NULL, 
+    'Non-Academic', NULL, NULL);
