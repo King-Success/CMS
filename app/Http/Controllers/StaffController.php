@@ -3,6 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Staff;
+use App\SubjectScores;
+use Auth;
+use Validator;
+use Redirect;
+use Input;
+use Yajra\Datatables\Datatables;
 
 class StaffController extends Controller
 {
