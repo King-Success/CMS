@@ -185,7 +185,7 @@
 			            { data: 'id', name: 'id'},
 			            {data: 'fullname', name: 'fullname'},
 			            { data: 'gender', name: 'gender' },
-			            { data: 'DOB', name: 'DOB' },
+			            { data: 'status', name: 'status' },
 			            { data: 'mobile_number', name: 'mobile_number' },
 			            { data: 'nationality', name: 'nationality' },
 			            // { data: 'state', name: 'state' },
