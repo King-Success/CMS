@@ -143,8 +143,8 @@
                                     <th>#</th>
                                     <th>Fullname</th>                               
                                     <th>Gender</th>  
-                                    <th>DOB</th>                            
-                                    <th>Parent Phone</th>                            
+                                    <th>Status</th>                            
+                                    <th>Phone</th>                            
                                     <th>Nationality</th>                            
                                     <!-- <th>State</th>                             -->
                                     <!-- <th>LGA</th>                             -->

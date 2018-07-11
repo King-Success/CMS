@@ -28,6 +28,8 @@ Route::middleware('auth')->group(function(){
 
     Route::get('/staff', 'staffController@index');
     Route::get('/staff/register', 'StaffController@create');
+    Route::get('/staff/ajax/search', 'StaffController@staffDatatable');
+    
 
 //     Route::post('student/{id}/scor', [
 //     'uses' => 'AboutController@show'
