@@ -65,3 +65,14 @@ INSERT INTO `students` (`id`, `firstname`, `lastname`, `othername`, `gender`, `D
  INSERT INTO `student_subject` (`id`, `student_id`, `subject_id`, `created_at`, `updated_at`) VALUES (NULL, '3', '1', 
  NULL, NULL), (NULL, '3', '2', NULL, NULL), (NULL, '3', '3', NULL, NULL), (NULL, '3', '4', NULL, NULL), (NULL, '3', '5',
   NULL, NULL), (NULL, '3', '6', NULL, NULL);
+
+  INSERT INTO `students` (`id`, `firstname`, `lastname`, `othername`, `gender`, `DOB`, `mobile_number`, `nationality`,
+   `state`, `LGA`, `religion`, `class_id`, `created_at`, `updated_at`, `class_option_id`) VALUES (NULL, 'Kingsley',
+    'Okonkwo', 'Arinze', 'Male', '1990-01-01', '08064402101', 'Nigerian', 'Anambra', 'Njikoka', 'Christianity', '6', 
+    '2018-06-10 21:40:49', '2018-06-10 21:40:49', '1'), (NULL, 'Stanley', 'Nndubusi', 'John', 'Male', '1990-01-01', 
+    '09094839483', 'Nigerian', 'Eboyi', 'Esi', 'Christianity', '6', '2018-07-05 20:02:31', '2018-07-05 20:02:31', '1');
+
+    INSERT INTO `student_subject` (`id`, `student_id`, `subject_id`, `created_at`, `updated_at`) VALUES (NULL, '1', '1',
+    NULL, NULL), (NULL, '1', '2', NULL, NULL), (NULL, '1', '3', NULL, NULL), (NULL, '1', '4', NULL, NULL), (NULL, '1', 
+    '5', NULL, NULL), (NULL, '1', '6', NULL, NULL), (NULL, '2', '1', NULL, NULL), (NULL, '2', '2', NULL, NULL), (NULL, 
+    '2', '3', NULL, NULL), (NULL, '2', '4', NULL, NULL), (NULL, '2', '5', NULL, NULL), (NULL, '2', '6', NULL, NULL);

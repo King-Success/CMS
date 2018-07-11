@@ -13,7 +13,7 @@ class AddEmailFieldToStaffTable extends Migration
      */
     public function up()
     {
-        Schema::table('staffs', function (Blueprint $table) {
+        Schema::table('staff', function (Blueprint $table) {
             $table->string('email')->nullable()->unique();
         });
     }
@@ -25,7 +25,7 @@ class AddEmailFieldToStaffTable extends Migration
      */
     public function down()
     {
-        Schema::table('staffs', function (Blueprint $table) {
+        Schema::table('staff', function (Blueprint $table) {
             $table->dropColumn('email');
         });
     }

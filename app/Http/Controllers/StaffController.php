@@ -94,13 +94,11 @@ class StaffController extends Controller
             'lastname' => 'required',
             'othername' => 'required',
             'gender' => 'required',
-            'DOB' => 'required',
+            'status' => 'required',
             'mobile_number' => 'required|numeric',
             'nationality' => 'required',
             'state' => 'required',
-            'LGA' => 'required',
-            'religion' => 'required',
-            'class_id' => 'required|integer',
+            'LGA' => 'required'
         );
 
         $validator = Validator::make(Input::all(), $rules);

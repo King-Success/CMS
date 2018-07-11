@@ -13,8 +13,8 @@ class AddPasswordFieldToStaffTable extends Migration
      */
     public function up()
     {
-        Schema::table('staffs', function (Blueprint $table) {
-            $table->
+        Schema::table('staff', function (Blueprint $table) {
+            $table->char('password', 100)->unique()->nullable();
         });
     }
 
@@ -25,7 +25,7 @@ class AddPasswordFieldToStaffTable extends Migration
      */
     public function down()
     {
-        Schema::table('staffs', function (Blueprint $table) {
+        Schema::table('staff', function (Blueprint $table) {
             //
         });
     }

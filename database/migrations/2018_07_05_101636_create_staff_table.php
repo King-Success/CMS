@@ -24,7 +24,7 @@ class CreateStaffTable extends Migration
             $table->string('nationality');
             $table->string('state');
             $table->string('LGA');
-            $table->integer('class_id');
+            $table->integer('staff_type_id')->unsigned();
             $table->timestamps();
         });
     }

@@ -125,8 +125,8 @@
         </div>
     </section>
 
-    <!-- Users -->
-    <section id="posts">
+    <!-- Staffs -->
+    <section id="staffs">
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -177,7 +177,7 @@
                             {!!Form::text('LGA', null, ['class' => 'form-control'])!!}
                           </div>
                            <div class="form-group col-sm-4">
-                            {!!Form::label('email', 'Emaial') !!}
+                            {!!Form::label('email', 'Email') !!}
                             {!!Form::text('email', null, ['class' => 'form-control'])!!}
                           </div>
                           <div class="form-group col-sm-4">
@@ -198,7 +198,7 @@
                         </div>
                         <div class="row">
                           <div class="form-group col-sm-12">
-                            {!!Form::submit('Create Student', ['class' => 'btn btn-primary d-block'])!!}
+                            {!!Form::submit('Create Staff', ['class' => 'btn btn-primary d-block'])!!}
                           </div>
                         </div>
                     {!! Form::close() !!}
