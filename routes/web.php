@@ -33,6 +33,13 @@ Route::middleware('auth')->group(function(){
     Route::post('/staff/register', 'StaffController@store');
     Route::get('/staff/{id}/delete', 'StaffController@destroy');
 
+
+    Route::get('/subject', 'SubjectController@index');
+    Route::get('/subject/add', 'SubjectController@create');
+    Route::get('/subject/ajax/search', 'SubjectController@subjectDatatable');
+    Route::post('/subject/add', 'SubjectController@store');
+    Route::get('/subject/{id}/delete', 'SubjectController@destroy');
+
     Route::get('/scores', function() {
         return view('student.score_form');
     });
