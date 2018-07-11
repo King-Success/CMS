@@ -132,9 +132,9 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Registered Students</h4>
+                            <h4>Staff Registration</h4>
                         </div>
-                        {!! Form::open(array('action' => 'StudentController@store', 'method' => 'POST'))!!}
+                        {!! Form::open(array('action' => 'StaffController@store', 'method' => 'POST'))!!}
                          <!-- <div class="row">
                             <div class="col-sm-3">
                                 <h3>Your Avatar</h3>

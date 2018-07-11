@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/student/{id}/scoresheet/{session}/{term}/create', 'SubjectScoresController@create');
     Route::post('/student/{id}/scoresheet/update', 'SubjectScoresController@update');
     Route::post('/student/{id}/scoresheet/{session}/{term}/store', 'SubjectScoresController@store');
+    Route::get('/staff/register', 'StaffController@create');
     Route::get('/student/{id}/delete', 'StudentController@destroy');
 //     Route::post('student/{id}/scor', [
 //     'uses' => 'AboutController@show'

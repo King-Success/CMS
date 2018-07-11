@@ -26,7 +26,7 @@ class AddEmailFieldToStaffTable extends Migration
     public function down()
     {
         Schema::table('staffs', function (Blueprint $table) {
-            //
+            $table->dropColumn('email');
         });
     }
 }
