@@ -107,7 +107,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addPostModal">
+                    <a href="/staff/register" class="btn btn-primary btn-block">
                         <i class="fa fa-plus"> Add Staff</i>
                     </a>
                 </div>

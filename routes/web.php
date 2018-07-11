@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/staff/register', 'StaffController@create');
     Route::get('/staff/ajax/search', 'StaffController@staffDatatable');
     Route::post('/staff/register', 'StaffController@store');
+    Route::get('/staff/{id}/delete', 'StaffController@destroy');
     
     
 
