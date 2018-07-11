@@ -132,7 +132,7 @@
                         <div class="card-header">
                             <h4>Subjects</h4>
                         </div>
-                        <table class="table table-striped" id="student-table">
+                        <table class="table table-striped" id="subject-table">
                             <thead class="thead-inverse">
                                 <tr>
                                     <th>#</th>
@@ -165,13 +165,13 @@
 	    // 	// $('select').material_select();
 
 	    	$(function() {
-			    $('#student-table').DataTable({
+			    $('#subject-table').DataTable({
 			        processing: true,
 			        serverSide: true,
-                    ajax: "{{ url('/student/ajax/search') }}",
+                    ajax: "{{ url('/subject/ajax/search') }}",
 			        columns: [
 			            { data: 'id', name: 'id'},
-			            {data: 'subject', name: 'subject'},
+			            {data: 'name', name: 'name'},
                         { data: 'created_at', name: 'created_at' },
 			            { data: 'actions', name: 'actions' }
                         

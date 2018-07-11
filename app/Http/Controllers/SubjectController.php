@@ -3,6 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Subject;
+use App\SubjectScores;
+use Auth;
+use Validator;
+use Redirect;
+use Input;
+use Yajra\Datatables\Datatables;
 
 class SubjectController extends Controller
 {
@@ -20,14 +27,14 @@ class SubjectController extends Controller
             $subject = array();
 
             $id = $rawSubject['id'];
-            $subject = $rawSubject['name'];
+            $name = $rawSubject['name'];
             $creation = $rawSubject['created_at'];
-
             // inject records into subject array
             $subject['id'] = $id;
-            $subject['name'] = $subject;
+            $subject['name'] = $name;
             $subject['created_at'] = $creation;
             //push subject array into subjects array
+            // dd($subject);
             array_push($subjects, $subject);
 
         }
@@ -48,7 +55,11 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        if($user->isAdmin){
+            return view('subject.index');
+        }
+        return Redirect::to('/home');
     }
 
     /**
