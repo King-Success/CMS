@@ -132,7 +132,22 @@ class SubjectController extends Controller
      */
     public function update(Request $request)
     {
-        //
+        $user = Auth::user();
+        if($user->isAdmin) {
+            $id = $request->id;
+            $name = $request->name;
+
+            $subject = Subject::find($id);
+            $subject->name = $name;
+            $response = $subject->save();
+            if($response) {
+                return redirect::to('/subject')
+                    ->with('status', 'Subject updated successfully');
+
+            }
+            return redirect::to('/subject')
+                ->with('status', 'Updated Failed');
+        }
     }
 
     /**
