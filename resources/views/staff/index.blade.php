@@ -107,7 +107,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <a href="/staff/register" class="btn btn-primary btn-block">
+                    <a href="/staff/register" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addStaffModal">
                         <i class="fa fa-plus"> Add Staff</i>
                     </a>
                 </div>
@@ -170,6 +170,88 @@
         </div>
     </footer>
     </div>
+
+       <!--ADD STAFF MODAL -->
+     <div class="modal fade" id="addStaffModal">
+         <div class="modal-dialog modal-lg">
+             <div class="modal-content">
+                 <div class="modal-header bg-warning text-white">
+                     <h5 class="modal-title">Add Staff</h5>
+                     <button class="close" data-dismiss="modal"><span>&times;</span></button>
+                 </div>
+                 {!! Form::open(array('action' => 'StaffController@store', 'method' => 'POST'))!!}
+                         <!-- <div class="row">
+                            <div class="col-sm-3">
+                                <h3>Your Avatar</h3>
+                                <img src="img/avatar.png" alt="profile picture" class="d-block img-fluid mb-3">
+                                <button class="btn btn-block btn-primary">Edit Image</button>
+                            </div>
+                        </div> -->
+                        <div class="row mx-1">
+                          <div class="form-group col-sm-4">
+                              {!!Form::label('staff_type', 'Staff Type')!!}
+                              {!!Form::text('staff_type_id', null, ['class' => 'form-control'])!!}
+                          </div> 
+                         
+                            <div class="form-group col-sm-4">
+                            {!!Form::label('firstname', 'First Name') !!}
+                            {!!Form::text('firstname', null, ['class' => 'form-control'])!!}
+                          </div>
+                            <div class="form-group col-sm-4">
+                            {!!Form::label('lastname', 'Last Name') !!}
+                            {!!Form::text('lastname', null, ['class' => 'form-control'])!!}
+                          </div>
+                        </div>
+                        <div class="row mx-1">
+                          <div class="form-group col-sm-4">
+                            {!!Form::label('othername', 'Other Name') !!}
+                            {!!Form::text('othername', null, ['class' => 'form-control'])!!}
+                          </div>
+                           <div class="form-group col-sm-4">
+                            {!!Form::label('nationality', 'Nationality') !!}
+                            {!!Form::text('nationality', null, ['class' => 'form-control'])!!}
+                          </div>
+                          <div class="form-group col-sm-4">
+                            {!!Form::label('state', 'State') !!}
+                            {!!Form::text('state', null, ['class' => 'form-control'])!!}
+                          </div>
+                        </div>
+                        <div class="row mx-1">
+                          <div class="form-group col-sm-4">
+                            {!!Form::label('LGA', 'LGA') !!}
+                            {!!Form::text('LGA', null, ['class' => 'form-control'])!!}
+                          </div>
+                           <div class="form-group col-sm-4">
+                            {!!Form::label('email', 'Email') !!}
+                            {!!Form::text('email', null, ['class' => 'form-control'])!!}
+                          </div>
+                          <div class="form-group col-sm-4">
+                            {!!Form::label('gender', 'Gender') !!}
+                            {!!Form::text('gender', null, ['class' => 'form-control'])!!}
+                          </div>
+                        </div>
+                        <div class="row mx-1">
+                         <div class="form-group col-sm-4">
+                            {!!Form::label('status', 'Status') !!}
+                            {!!Form::text('status', null, ['class' => 'form-control'])!!}
+                          </div>
+                         
+                            <div class="form-group col-sm-4">
+                            {!!Form::label('mobile_number', 'Phone') !!}
+                            {!!Form::text('mobile_number', null, ['class' => 'form-control'])!!}
+                            </div>
+
+                            <div class="form-group col-sm-4">
+                            {!!Form::label('submit', null) !!}
+                            {!!Form::submit('Create Staff', ['class' => 'btn btn-primary btn-block'])!!}
+                            </div>
+                        </div>
+                    {!! Form::close() !!}
+             </div>
+         </div>
+     </div>
+
+    
     
 <script type="text/javascript">
 		$(document).ready(function() {
