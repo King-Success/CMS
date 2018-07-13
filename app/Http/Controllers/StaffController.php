@@ -50,7 +50,7 @@ class StaffController extends Controller
                     return date('d F Y', strtotime($data['created_at']));
                 })
                 ->addColumn('actions', function($data){
-                     return "<a class='btn btn-primary' href='/staff/" . $data['id'] . "/scoresheet/1/1/edit'>Profile</a> <a class='btn btn-danger' href='/staff/" . $data['id'] . "/delete'>Delete</a>";
+                     return "<a class='btn btn-primary' data-toggle='modal' data-target='#editStaffModal'><i class='fa fa-edit'></i></a> <a class='btn btn-danger' href='/staff/" . $data['id'] . "/delete'><i class='fa fa-trash'></i></a>";
                 })
                 ->rawColumns(['actions'])
                 ->make(true);
