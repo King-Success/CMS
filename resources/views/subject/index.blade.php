@@ -217,6 +217,7 @@
 			        processing: true,
 			        serverSide: true,
                     ajax: "{{ url('/subject/ajax/search') }}",
+                    //add an id of name to all td no. 2 of each tr
                     createdRow: function ( row, data, index ) {
                         $('td', row).eq(1).attr('id', 'name');
                     },
@@ -234,12 +235,11 @@
                 var target = e.relatedTarget;
                 // get values for particular rows
                 var tr = $( target ).closest( 'tr' );
-                var tds = tr.find( '#name' );
-                console.log(tds.eq(0).text());
+                var nameTd = tr.find( '#name' );
 
                 // put values into editor's form elements
-                // tds.eq(0).val() -- 1st column
-                $( '#subjectName' ).val( tds.eq(0).text() );
+                // nameTd.eq(0).val() -- 1st column
+                $( '#subjectName' ).val( nameTd.eq(0).text() );
                 // tds.eq(1).val() -- 2nd column and so on.
                 // same goes to others element
             });
