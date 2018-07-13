@@ -192,7 +192,8 @@
                      <h5 class="modal-title">Edit Subject</h5>
                      <button class="close" data-dismiss="modal"><span>&times;</span></button>
                  </div>
-                 {!! Form::open(array('method' => 'POST')) !!}
+                 {!! Form::open(array('action' => 'SubjectController@update', 'method' => 'POST')) !!}
+                 {{ Form::hidden('id', null, ['id' => 'subjectID']) }}
                  <div class="modal-body">
                           <div class="form-group">
                               {!! Form::label('name', 'Name') !!}
@@ -219,6 +220,7 @@
                     ajax: "{{ url('/subject/ajax/search') }}",
                     //add an id of name to all td no. 2 of each tr
                     createdRow: function ( row, data, index ) {
+                        $('td', row).eq(0).attr('id', 'id');
                         $('td', row).eq(1).attr('id', 'name');
                     },
 			        columns: [
@@ -235,10 +237,12 @@
                 var target = e.relatedTarget;
                 // get values for particular rows
                 var tr = $( target ).closest( 'tr' );
+                var idTd = tr.find('#id');
                 var nameTd = tr.find( '#name' );
 
                 // put values into editor's form elements
                 // nameTd.eq(0).val() -- 1st column
+                $('#subjectID' ).val(idTd.eq(0).text());
                 $( '#subjectName' ).val( nameTd.eq(0).text() );
                 // tds.eq(1).val() -- 2nd column and so on.
                 // same goes to others element
