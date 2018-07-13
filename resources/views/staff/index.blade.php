@@ -146,7 +146,7 @@
                                     <th>Status</th>                            
                                     <th>Phone</th>                            
                                     <th>Nationality</th>                            
-                                     <th>Password</th>                             
+                                     <!-- <th>Password</th>                              -->
                                      <th>Email</th>                             
                                      <!-- <th>Religion</th>                              -->
                                       <th>Creation Date</th>                              
@@ -343,6 +343,28 @@
 			        processing: true,
 			        serverSide: true,
                     ajax: "{{ url('/staff/ajax/search') }}",
+                    columnDefs: [
+                        {
+                            "targets": [ 9 ],
+                            "visible": false,
+                            "searchable": false
+                        },
+                        {
+                            "targets": [ 10 ],
+                            "visible": false,
+                            "searchable": false
+                        },
+                        {
+                            "targets": [ 11 ],
+                            "visible": false,
+                            "searchable": false
+                        },
+                        {
+                            "targets": [ 12 ],
+                            "visible": false,
+                            "searchable": false
+                        }
+                    ],
                     //add an id to all tds of each tr
                     createdRow: function ( row, data, index ) {
                         $('td', row).eq(0).attr('id', 'staff_type');
@@ -351,8 +373,8 @@
                         $('td', row).eq(3).attr('id', 'status');
                         $('td', row).eq(4).attr('id', 'phone');
                         $('td', row).eq(5).attr('id', 'nationality');
-                        $('td', row).eq(6).attr('id', 'password');
-                        $('td', row).eq(7).attr('id', 'email');
+                        $('td', row).eq(6).attr('id', 'email');
+                        // $('td', row).eq(9).attr('id', 'password');
 
                     },
 			        columns: [
@@ -362,10 +384,13 @@
 			            { data: 'status', name: 'status' },
 			            { data: 'mobile_number', name: 'mobile_number' },
 			            { data: 'nationality', name: 'nationality' },
-			            { data: 'password', name: 'password' },
 			            { data: 'email', name: 'email' },
                         { data: 'created_at', name: 'created_at' },
-			            { data: 'actions', name: 'actions' }
+			            { data: 'actions', name: 'actions' },
+                        { data: 'staff_type_id', name: 'staff_type_id'},
+			            { data: 'state', name: 'state' },
+			            { data: 'LGA', name: 'LGA' },
+			            { data: 'password', name: 'password'},
                         
 			        ]
 			    });

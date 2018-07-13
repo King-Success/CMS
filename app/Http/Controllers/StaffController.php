@@ -29,6 +29,9 @@ class StaffController extends Controller
             $status = $rawStaff['status'];
             $mobileNumber = $rawStaff['mobile_number'];
             $nationality = $rawStaff['nationality'];
+            $state = $rawStaff['state'];
+            $LGA = $rawStaff['LGA'];
+            $staff_type_id = $rawStaff['staff_type_id'];
             $email = $rawStaff['email'];
             $password = $rawStaff['password'];
             $creation = $rawStaff['created_at'];
@@ -45,7 +48,10 @@ class StaffController extends Controller
             $staff['status'] = $status;
             $staff['mobile_number'] = $mobileNumber;
             $staff['nationality'] = $nationality;
+            $staff['state'] = $state;
+            $staff['LGA'] = $LGA;
             $staff['staff_type'] = $staff_type['name'];
+            $staff['staff_type_id'] = $staff_type_id;
             $staff['email'] = $email;
             $staff['password'] = $password;
             $staff['created_at'] = $creation;
