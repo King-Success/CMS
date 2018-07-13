@@ -80,7 +80,25 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $user = Auth::user();
+        if($user->isAdmin){
+            $rules = array(
+            'name' => 'required'
+        );
+        $validator = Validator::make(Input::all(), $rules);
+
+        if ($validator->fails()) {
+            return Redirect::to('/subject')
+                ->with('status', 'Subject creation Failed');
+                // ->withErrors($validator)
+                dd($request);
+                // ->withInput(Input::all());
+        } else {
+            $subject = Subject::create(Input::all());
+            return Redirect::to('/subject')
+                ->with('status', 'Created Successfully');
+        }
+    }
     }
 
     /**
@@ -125,6 +143,18 @@ class SubjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = Auth::user();
+        if($user->isAdmin) {
+            $subject = Subject::find($id);
+            $response = $subject->delete();
+            if($response){
+                return redirect::to('/subject')
+                    ->with('status', 'Subject deleted successfully');
+            }
+            return redirect::to('/subject')
+                ->with('status', 'Subject deletion failed');
+        }
+        redirect::to('student')
+            ->with('status', 'Insufficient privilege');
     }
 }

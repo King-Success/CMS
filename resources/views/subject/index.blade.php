@@ -136,7 +136,7 @@
                             <thead class="thead-inverse">
                                 <tr>
                                     <th>#</th>
-                                    <th>Subject</th>                                   -->
+                                    <th>Subject</th>                                  
                                     <th>Creation Date</th>                              
                                     <th>Actions</th>                             
                                 </tr>
