@@ -160,7 +160,7 @@
     </div>
     
 
-         <!-- SUBJECT MODAL -->
+         <!--ADD SUBJECT MODAL -->
      <div class="modal fade" id="addSubjectModal">
          <div class="modal-dialog modal-lg">
              <div class="modal-content">
@@ -183,6 +183,30 @@
              </div>
          </div>
      </div>
+
+        <!-- EDIT SUBJECT MODAL -->
+     <div class="modal fade" id="editSubjectModal">
+         <div class="modal-dialog modal-lg">
+             <div class="modal-content">
+                 <div class="modal-header bg-warning text-white">
+                     <h5 class="modal-title">Edit Subject</h5>
+                     <button class="close" data-dismiss="modal"><span>&times;</span></button>
+                 </div>
+                 {!! Form::open(array('method' => 'POST')) !!}
+                 <div class="modal-body">
+                          <div class="form-group">
+                              {!! Form::label('name', 'Name') !!}
+                              {!! Form::text('name', null, ['class' => 'form-control', 'id' => 'subjectName']) !!}
+                          </div>
+                 </div>
+                 <div class="modal-footer">
+                     {!! Form::submit('Close', ['class' => 'btn btn-secondary', 'data-dismiss' => 'modal']) !!}
+                     {!! Form::submit('Submit', ['class' => 'btn btn-warning']) !!}
+                 </div>
+                 {!! Form::close()!!}
+             </div>
+         </div>
+     </div>
 <script type="text/javascript">
 		$(document).ready(function() {
 	    // 	// $('.listing').DataTable();
@@ -193,6 +217,9 @@
 			        processing: true,
 			        serverSide: true,
                     ajax: "{{ url('/subject/ajax/search') }}",
+                    createdRow: function ( row, data, index ) {
+                        $('td', row).eq(1).attr('id', 'name');
+                    },
 			        columns: [
 			            { data: 'id', name: 'id'},
 			            {data: 'name', name: 'name'},
@@ -202,6 +229,20 @@
 			        ]
 			    });
 			});
+
+            $( '#editSubjectModal' ).on( 'show.bs.modal', function (e) {
+                var target = e.relatedTarget;
+                // get values for particular rows
+                var tr = $( target ).closest( 'tr' );
+                var tds = tr.find( '#name' );
+                console.log(tds.eq(0).text());
+
+                // put values into editor's form elements
+                // tds.eq(0).val() -- 1st column
+                $( '#subjectName' ).val( tds.eq(0).text() );
+                // tds.eq(1).val() -- 2nd column and so on.
+                // same goes to others element
+            });
 		});
 	</script>
 <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->

@@ -43,7 +43,7 @@ class SubjectController extends Controller
                     return date('d F Y', strtotime($data['created_at']));
                 })
                 ->addColumn('actions', function($data){
-                     return "<a class='btn btn-primary' href='/subject/" . $data['id'] . "/scoresheet/1/1/edit'>Edit</a> <a class='btn btn-danger' href='/subject/" . $data['id'] . "/delete'>Delete</a>";
+                     return "<a class='btn btn-primary' data-toggle='modal' data-target='#editSubjectModal'><i class='fa fa-edit'></i></a> <a class='btn btn-danger' href='/subject/" . $data['id'] . "/delete'><i class='fa fa-trash'></i></a>";
                 })
                 ->rawColumns(['actions'])
                 ->make(true);

@@ -39,6 +39,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/subject/ajax/search', 'SubjectController@subjectDatatable');
     Route::post('/subject/add', 'SubjectController@store');
     Route::get('/subject/{id}/delete', 'SubjectController@destroy');
+    Route::get('/subject/{id}/update', 'SubjectController@update');
 
     Route::get('/scores', function() {
         return view('student.score_form');
