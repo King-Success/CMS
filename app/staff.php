@@ -15,4 +15,8 @@ class staff extends Model
      public function subject() {
          return $this->belongsTo('App\subject');
      }
+
+     public function staffType() {
+         return $this->belongsTo('App\staffType');
+     }
 }

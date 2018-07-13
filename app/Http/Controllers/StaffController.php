@@ -29,7 +29,12 @@ class StaffController extends Controller
             $status = $rawStaff['status'];
             $mobileNumber = $rawStaff['mobile_number'];
             $nationality = $rawStaff['nationality'];
+            $email = $rawStaff['email'];
+            $password = $rawStaff['password'];
             $creation = $rawStaff['created_at'];
+
+            //get staff type from staff_type table through staff_type_id
+            $staff_type = Staff::find($id)->staffType;
 
             // construct a fullname variable here
             $fullName = $firstName. ' ' . $otherName . ' '. $lastName;
@@ -40,6 +45,9 @@ class StaffController extends Controller
             $staff['status'] = $status;
             $staff['mobile_number'] = $mobileNumber;
             $staff['nationality'] = $nationality;
+            $staff['staff_type'] = $staff_type['name'];
+            $staff['email'] = $email;
+            $staff['password'] = $password;
             $staff['created_at'] = $creation;
             //push staff array into staffs array
             array_push($staffs, $staff);
