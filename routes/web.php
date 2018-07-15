@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function(){
     Route::post('/subject/update', 'SubjectController@update');
 
     Route::get('/subject/mapping', 'SubjectMappingController@index');
+    Route::get('/subject/mapping/ajax/search', 'SubjectController@subjectMappingDatatable');
     Route::post('/subject/mapping/{id}/update', 'SubjectMappingController@update');
     Route::post('/subject/mapping/{id}/delete', 'SubjectMappingController@destroy');
 

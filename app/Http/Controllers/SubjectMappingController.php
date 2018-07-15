@@ -82,4 +82,11 @@ class SubjectMappingController extends Controller
                 ->rawColumns(['actions'])
                 ->make(true);
     }
+
+    public function index() {
+        $user = Auth::user();
+        if($user->isAdmin) {
+            return view('subjectMapping.index');
+        }
+    }
 }

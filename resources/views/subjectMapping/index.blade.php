@@ -131,7 +131,8 @@
                                     <th>Subject</th>                                  
                                     <th>Class</th>                              
                                     <th>Teacher</th>   
-                                    <th></th>                          
+                                    <th>Created At</th>  
+                                    <th></th>                        
                                 </tr>
                             </thead>
                         </table>
@@ -153,8 +154,8 @@
     </div>
     
 
-         <!--ADD SUBJECT MODAL -->
-     <div class="modal fade" id="addSubjectModal">
+         <!--ADD SUBJECT MAPPING MODAL -->
+     <div class="modal fade" id="addSubjectMappingModal">
          <div class="modal-dialog modal-lg">
              <div class="modal-content">
                  <div class="modal-header bg-warning text-white">
@@ -177,12 +178,12 @@
          </div>
      </div>
 
-        <!-- EDIT SUBJECT MODAL -->
-     <div class="modal fade" id="editSubjectModal">
+        <!-- EDIT SUBJECT MAPPING MODAL -->
+     <div class="modal fade" id="editSubjectMappingModal">
          <div class="modal-dialog modal-lg">
              <div class="modal-content">
                  <div class="modal-header bg-warning text-white">
-                     <h5 class="modal-title">Edit Subject</h5>
+                     <h5 class="modal-title">Reallocate Subject</h5>
                      <button class="close" data-dismiss="modal"><span>&times;</span></button>
                  </div>
                  {!! Form::open(array('action' => 'SubjectController@update', 'method' => 'POST')) !!}
@@ -208,15 +209,19 @@
 			    $('#subject-table').DataTable({
 			        processing: true,
 			        serverSide: true,
-                    ajax: "{{ url('/subject/ajax/search') }}",
-                    //add an id of name to all td no. 2 of each tr
+                    ajax: "{{ url('/subject/mapping/ajax/search') }}",
+                    //assigning id to tr the datatables way for easy modal display
                     createdRow: function ( row, data, index ) {
                         $('td', row).eq(0).attr('id', 'id');
-                        $('td', row).eq(1).attr('id', 'name');
+                        $('td', row).eq(1).attr('id', 'subject');
+                        $('td', row).eq(1).attr('id', 'teacher');
+                        $('td', row).eq(1).attr('id', 'class');
                     },
 			        columns: [
 			            { data: 'id', name: 'id'},
-			            {data: 'name', name: 'name'},
+			            {data: 'subject', name: 'subject'},
+                        { data: 'teacher', name: 'teacher' },
+                        { data: 'class', name: 'class' },
                         { data: 'created_at', name: 'created_at' },
 			            { data: 'actions', name: 'actions' }
                         
@@ -224,17 +229,21 @@
 			    });
 			});
 
-            $( '#editSubjectModal' ).on( 'show.bs.modal', function (e) {
+            $( '#editSubjectMappingModal' ).on( 'show.bs.modal', function (e) {
                 var target = e.relatedTarget;
                 // get values for particular rows
                 var tr = $( target ).closest( 'tr' );
                 var idTd = tr.find('#id');
-                var nameTd = tr.find( '#name' );
+                var subjectTd = tr.find( '#subject' );
+                var teacherTd = tr.find( '#teacher' );
+                var classTd = tr.find( 'class' );
 
                 // put values into editor's form elements
                 // nameTd.eq(0).val() -- 1st column
-                $('#subjectID' ).val(idTd.eq(0).text());
-                $( '#subjectName' ).val( nameTd.eq(0).text() );
+                $('#id' ).val(idTd.eq(0).text());
+                $( '#subject' ).val( subjectTd.eq(0).text() );
+                $( '#teacher' ).val( teacherTd.eq(0).text() );
+                $( '#class' ).val( classTd.eq(0).text() );
                 // tds.eq(1).val() -- 2nd column and so on.
                 // same goes to others element
             });
