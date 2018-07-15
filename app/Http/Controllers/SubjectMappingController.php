@@ -77,7 +77,7 @@ class SubjectMappingController extends Controller
                     return date('d F Y', strtotime($data['created_at']));
                 })
                 ->addColumn('actions', function($data){
-                     return "<a class='btn btn-primary' data-toggle='modal' data-target='#editSubjectModal'><i class='fa fa-edit'></i></a> <a class='btn btn-danger' href='/subjectMapping/" . $data['id'] . "/delete'><i class='fa fa-trash'></i></a>";
+                     return "<a class='btn btn-primary' data-toggle='modal' data-target='#editSubjectModal'><i class='fa fa-edit'></i></a> <a class='btn btn-danger' href='/subject/mapping/" . $data['id'] . "/delete'><i class='fa fa-trash'></i></a>";
                 })
                 ->rawColumns(['actions'])
                 ->make(true);

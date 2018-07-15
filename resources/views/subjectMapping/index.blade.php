@@ -203,14 +203,12 @@
      </div>
 <script type="text/javascript">
 		$(document).ready(function() {
-	    // 	// $('.listing').DataTable();
-	    // 	// $('select').material_select();
 
 	    	$(function() {
 			    $('#subject-table').DataTable({
 			        processing: true,
 			        serverSide: true,
-                    // ajax: "{{ url('/subject/ajax/search') }}",
+                    ajax: "{{ url('/subject/ajax/search') }}",
                     //add an id of name to all td no. 2 of each tr
                     createdRow: function ( row, data, index ) {
                         $('td', row).eq(0).attr('id', 'id');
