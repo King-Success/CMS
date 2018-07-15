@@ -83,3 +83,8 @@ INSERT INTO `students` (`id`, `firstname`, `lastname`, `othername`, `gender`, `D
     INSERT INTO `subject_mappings` (`id`, `subject`, `teacher_id`, `class_id`, `class_options_id`, `session_id`, 
     `term_id`, `created_at`, `updated_at`) VALUES (NULL, 'Physics', '1', '6', '1', '1', '1', '2018-07-13 00:00:00', 
     '2018-07-25 00:00:00');
+
+    INSERT INTO `staff` (`id`, `firstname`, `lastname`, `othername`, `gender`, `status`, `mobile_number`, `nationality`, 
+    `state`, `LGA`, `staff_type_id`, `created_at`, `updated_at`, `email`, `password`) VALUES (NULL, 'Kingsley', 'Arinze',
+     'Okonkwo', 'Male', 'Single', '080644586975', 'Nigeria', 'Anambra', 'Njikoka', '1', '2018-06-10 21:40:49', 
+     '2018-06-10 21:40:49', 'code4kings@gmail.com', '1234567890');

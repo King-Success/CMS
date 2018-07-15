@@ -8,6 +8,7 @@ use App\SubjectMapping;
 use App\Teacher;
 use App\SchoolClass;
 use App\Session;
+use App\Staff;
 use App\Term;
 use App\ClassOptions;
 use Auth;
@@ -60,9 +61,18 @@ class SubjectMappingController extends Controller
 
             $id = $rawSubjectMapping['id'];
             $subject = $rawSubjectMapping['subject'];
-            $teacher = $rawSubjectMapping['teacher_id'];
-            $class = $rawSubjectMapping['class_id'];
+            $teacher_id = $rawSubjectMapping['teacher_id'];
+            $class_id = $rawSubjectMapping['class_id'];
             $creation = $rawSubjectMapping['created_at'];
+            // get the name of teacher and class from respective models for display
+            $staff_id = Teacher::find($teacher_id)->staff_id;
+            // teacher is gotten from staff table so we still need to look into staff table to get full details
+            $rawTeacher = Staff::select('firstname', 'lastname')
+                ->where('id', '=', $staff_id)
+                ->get();
+            $rawTeacher = $rawTeacher[0];
+            $teacher = $rawTeacher->firstname . ' ' . $rawTeacher->lastname;
+            $class = SchoolClass::find($class_id)->name;
             // inject records into subjectMapping array
             $subjectMapping['id'] = $id;
             $subjectMapping['subject'] = $subject;
