@@ -16,7 +16,7 @@ class CreateSubjectMappingsTable extends Migration
         Schema::create('subject_mappings', function (Blueprint $table) {
             $table->increments('id');
             $table->string('subject');
-            $table->integer('staff_id')->unsigned();
+            $table->integer('teacher_id')->unsigned();
             $table->integer('class_id')->unsigned();
             $table->integer('class_option_id')->unsigned()->nullable();
             $table->integer('session_id')->unsigned();
