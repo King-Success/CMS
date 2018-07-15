@@ -48,12 +48,12 @@ class StaffController extends Controller
             $staff['status'] = $status;
             $staff['mobile_number'] = $mobileNumber;
             $staff['nationality'] = $nationality;
-            $staff['state'] = $state;
-            $staff['LGA'] = $LGA;
+            // $staff['state'] = $state;
+            // $staff['LGA'] = $LGA;
             $staff['staff_type'] = $staff_type['name'];
-            $staff['staff_type_id'] = $staff_type_id;
+            // $staff['staff_type_id'] = $staff_type_id;
             $staff['email'] = $email;
-            $staff['password'] = $password;
+            // $staff['password'] = $password;
             $staff['created_at'] = $creation;
             //push staff array into staffs array
             array_push($staffs, $staff);

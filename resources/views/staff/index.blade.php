@@ -343,28 +343,6 @@
 			        processing: true,
 			        serverSide: true,
                     ajax: "{{ url('/staff/ajax/search') }}",
-                    columnDefs: [
-                        {
-                            "targets": [ 9 ],
-                            "visible": false,
-                            "searchable": false
-                        },
-                        {
-                            "targets": [ 10 ],
-                            "visible": false,
-                            "searchable": false
-                        },
-                        {
-                            "targets": [ 11 ],
-                            "visible": false,
-                            "searchable": false
-                        },
-                        {
-                            "targets": [ 12 ],
-                            "visible": false,
-                            "searchable": false
-                        }
-                    ],
                     //add an id to all tds of each tr
                     createdRow: function ( row, data, index ) {
                         $('td', row).eq(0).attr('id', 'staff_type');
@@ -387,10 +365,10 @@
 			            { data: 'email', name: 'email' },
                         { data: 'created_at', name: 'created_at' },
 			            { data: 'actions', name: 'actions' },
-                        { data: 'staff_type_id', name: 'staff_type_id'},
-			            { data: 'state', name: 'state' },
-			            { data: 'LGA', name: 'LGA' },
-			            { data: 'password', name: 'password'},
+                        // { data: 'staff_type_id', name: 'staff_type_id', visibilty: 'false'},
+			            // { data: 'state', name: 'state', visibility: 'false' },
+			            // { data: 'LGA', name: 'LGA', visiblity: 'false' },
+			            // { data: 'password', name: 'password', visiblity: 'false'},
                         
 			        ]
 			    });
