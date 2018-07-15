@@ -18,7 +18,7 @@ class CreateSubjectMappingsTable extends Migration
             $table->string('subject');
             $table->integer('teacher_id')->unsigned();
             $table->integer('class_id')->unsigned();
-            $table->integer('class_option_id')->unsigned()->nullable();
+            $table->integer('class_options_id')->unsigned()->nullable();
             $table->integer('session_id')->unsigned();
             $table->integer('term_id')->unsigned();
             $table->timestamps();
