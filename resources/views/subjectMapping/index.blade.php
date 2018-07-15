@@ -214,14 +214,14 @@
                     createdRow: function ( row, data, index ) {
                         $('td', row).eq(0).attr('id', 'id');
                         $('td', row).eq(1).attr('id', 'subject');
-                        $('td', row).eq(1).attr('id', 'teacher');
                         $('td', row).eq(1).attr('id', 'class');
+                        $('td', row).eq(1).attr('id', 'teacher');
                     },
 			        columns: [
 			            { data: 'id', name: 'id'},
 			            {data: 'subject', name: 'subject'},
-                        { data: 'teacher', name: 'teacher' },
                         { data: 'class', name: 'class' },
+                        { data: 'teacher', name: 'teacher' },
                         { data: 'created_at', name: 'created_at' },
 			            { data: 'actions', name: 'actions' }
                         
