@@ -107,7 +107,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <a href="" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addSubjectModal">
+                    <a href="" class="btn btn-primary btn-block" data-toggle="modal" data-target="#mapSubjectModal">
                         <i class="fa fa-plus"> Allocate Subject</i>
                     </a>
                 </div>
@@ -155,18 +155,28 @@
     
 
          <!--ADD SUBJECT MAPPING MODAL -->
-     <div class="modal fade" id="addSubjectMappingModal">
-         <div class="modal-dialog modal-lg">
+     <div class="modal fade" id="mapSubjectModal">
+         <div class="modal-dialog modal-md">
              <div class="modal-content">
                  <div class="modal-header bg-warning text-white">
-                     <h5 class="modal-title">Add Subject</h5>
+                     <h5 class="modal-title">Allocate Subject</h5>
                      <button class="close" data-dismiss="modal"><span>&times;</span></button>
                  </div>
-                 {!! Form::open(array('action' => 'SubjectController@store', 'method' => 'POST')) !!}
+                <form action="/subject/mapping/map"></form>
                  <div class="modal-body">
                           <div class="form-group">
-                              {!! Form::label('name', 'Name') !!}
-                              {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                              <label for="subject">Subject</label>
+                              <select name="subject" id="" type="text" class="form-control">
+                                <option value=""></option>
+                              </select>
+                              <label for="teacher">Teacher</label>
+                              <select name="teacher" id="" type="text" class="form-control">
+                                <option value=""></option>
+                              </select>
+                              <label for="class">Class</label>
+                              <select name="class" id="" type="text" class="form-control">
+                                <option value=""></option>
+                              </select>
                           </div>
                  </div>
                  <div class="modal-footer">
