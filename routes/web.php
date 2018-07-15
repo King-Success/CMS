@@ -42,6 +42,10 @@ Route::middleware('auth')->group(function(){
     Route::get('/subject/{id}/delete', 'SubjectController@destroy');
     Route::post('/subject/update', 'SubjectController@update');
 
+    Route::get('/subject/mapping', 'SubjectMappingController@index');
+    Route::post('/subject/mapping/{id}/update', 'SubjectMappingController@update');
+    Route::post('/subject/mapping/{id}/delete', 'SubjectMappingController@destroy');
+
     Route::get('/scores', function() {
         return view('student.score_form');
     });

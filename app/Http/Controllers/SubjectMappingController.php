@@ -44,4 +44,42 @@ class SubjectMappingController extends Controller
         }
     
     }
+
+     /**
+    * Process datatables ajax request.
+    *
+    * @return \Illuminate\Http\JsonResponse
+    */
+    public function subjectMappingDatatable() {
+
+        $rawSubjectMappings = SubjectMapping::all();
+        $subjectMappings = array();
+        foreach($rawSubjectMappings as $rawSubjectMapping){
+            $subjectMapping = array();
+
+            $id = $rawSubjectMapping['id'];
+            $subject = $rawSubjectMapping['subject'];
+            $teacher = $rawSubjectMapping['teacher'];
+            $class = $rawSubjectMapping['class'];
+            $creation = $rawSubject['created_at'];
+            // inject records into subjectMapping array
+            $subjectMapping['id'] = $id;
+            $subjectMapping['subject'] = $subject;
+            $subjectMapping['teacher'] = $teacher;
+            $subjectMapping['class'] = $class;
+            $subjectMapping['created_at'] = $creation;
+            //push subjectMapping array into subjectMappings array
+            array_push($subjectMappings, $subjectMapping);
+
+        }
+        return Datatables::of($subjectMappings)
+                ->editColumn('created_at', function($data){
+                    return date('d F Y', strtotime($data['created_at']));
+                })
+                ->addColumn('actions', function($data){
+                     return "<a class='btn btn-primary' data-toggle='modal' data-target='#editSubjectModal'><i class='fa fa-edit'></i></a> <a class='btn btn-danger' href='/subjectMapping/" . $data['id'] . "/delete'><i class='fa fa-trash'></i></a>";
+                })
+                ->rawColumns(['actions'])
+                ->make(true);
+    }
 }
