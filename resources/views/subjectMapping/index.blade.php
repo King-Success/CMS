@@ -124,7 +124,7 @@
                         <div class="card-header">
                             <h4>Subjects Allocation</h4>
                         </div>
-                        <table class="table table-striped" id="subject-table">
+                        <table class="table table-striped" id="subject-mapping-table">
                             <thead class="thead-inverse">
                                 <tr>
                                     <th>#</th>
@@ -206,7 +206,7 @@
 		$(document).ready(function() {
 
 	    	$(function() {
-			    $('#subject-table').DataTable({
+			    $('#subject-mapping-table').DataTable({
 			        processing: true,
 			        serverSide: true,
                     ajax: "{{ url('/subject/mapping/ajax/search') }}",

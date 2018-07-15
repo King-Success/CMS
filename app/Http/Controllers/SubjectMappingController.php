@@ -14,6 +14,7 @@ use Auth;
 use Validator;
 use Redirect;
 use Input;
+use Yajra\Datatables\Datatables;
 
 class SubjectMappingController extends Controller
 {
@@ -59,9 +60,9 @@ class SubjectMappingController extends Controller
 
             $id = $rawSubjectMapping['id'];
             $subject = $rawSubjectMapping['subject'];
-            $teacher = $rawSubjectMapping['teacher'];
-            $class = $rawSubjectMapping['class'];
-            $creation = $rawSubject['created_at'];
+            $teacher = $rawSubjectMapping['teacher_id'];
+            $class = $rawSubjectMapping['class_id'];
+            $creation = $rawSubjectMapping['created_at'];
             // inject records into subjectMapping array
             $subjectMapping['id'] = $id;
             $subjectMapping['subject'] = $subject;
@@ -77,7 +78,7 @@ class SubjectMappingController extends Controller
                     return date('d F Y', strtotime($data['created_at']));
                 })
                 ->addColumn('actions', function($data){
-                     return "<a class='btn btn-primary' data-toggle='modal' data-target='#editSubjectModal'><i class='fa fa-edit'></i></a> <a class='btn btn-danger' href='/subject/mapping/" . $data['id'] . "/delete'><i class='fa fa-trash'></i></a>";
+                     return "<a class='btn btn-primary' data-toggle='modal' data-target='#editSubjectMappingModal'><i class='fa fa-edit'></i></a> <a class='btn btn-danger' href='/subject/mapping/" . $data['id'] . "/delete'><i class='fa fa-trash'></i></a>";
                 })
                 ->rawColumns(['actions'])
                 ->make(true);

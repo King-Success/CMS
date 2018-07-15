@@ -24,11 +24,11 @@ SET time_zone = "+00:00";
 
 --
 -- dumping data into table `subjects`
-INSERT INTO `subjects` (`id`, `name`, `class_id`, `staff_id`, `created_at`, `updated_at`) VALUES (NULL, 'Physics',
-'', '', NULL, NULL), (NULL, 'Mathmatics', '', '', NULL, NULL), (NULL, 'Biology', '', '', NULL, NULL), (NULL, 'Economics',
-'', '', NULL, NULL), (NULL, 'Agric', '', '', NULL, NULL), (NULL, 'English', '', '', NULL, NULL), (NULL, 'Commerce', '',
-'', NULL, NULL), (NULL, 'History', '', '', NULL, NULL), (NULL, 'Technical drawing', '', '', NULL, NULL), (NULL, 
-'Further Mathmatics', '', '', NULL, NULL);
+INSERT INTO `subjects` (`id`, `name`, `class_id`, `staff_id`, `created_at`, `updated_at`) VALUES (NULL, 'Physics', 
+NULL, NULL), (NULL, 'Mathmatics',NULL, NULL), (NULL, 'Biology',NULL, NULL), (NULL, 'Economics',NULL, NULL),
+ (NULL, 'Agric',NULL, NULL), (NULL, 'English',NULL, NULL), (NULL, 'Commerce',NULL, NULL), (NULL, 'History',NULL, NULL),
+  (NULL, 'Technical drawing',NULL, NULL), (NULL, 
+'Further Mathmatics',NULL, NULL);
 
 
 INSERT INTO `subject_scores` (`id`, `student_id`, `subject_id`, `class_id`, `class_options_id`, `teacher_id`, 
@@ -79,3 +79,7 @@ INSERT INTO `students` (`id`, `firstname`, `lastname`, `othername`, `gender`, `D
 
     INSERT INTO `staff_types` (`id`, `name`, `created_at`, `updated_at`) VALUES (NULL, 'Academic', NULL, NULL), (NULL, 
     'Non-Academic', NULL, NULL);
+
+    INSERT INTO `subject_mappings` (`id`, `subject`, `teacher_id`, `class_id`, `class_options_id`, `session_id`, 
+    `term_id`, `created_at`, `updated_at`) VALUES (NULL, 'Physics', '1', '6', '1', '1', '1', '2018-07-13 00:00:00', 
+    '2018-07-25 00:00:00');
