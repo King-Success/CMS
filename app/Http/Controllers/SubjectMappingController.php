@@ -45,6 +45,10 @@ class SubjectMappingController extends Controller
             // since I cant call save method on searchForSubjectMap collection, I will find the record using eloquent 
             // so that I can easily update with save method
             $getSubjectMap = SubjectMapping::find($contentId);
+            if($getSubjectMap->teacher_id == $teacher_id){
+                return Redirect::to('subject/mapping/')
+                    ->with('status', 'No Changes Effected');
+            }
             $getSubjectMap->teacher_id = $teacher_id;
             $response = $getSubjectMap->save();
 
