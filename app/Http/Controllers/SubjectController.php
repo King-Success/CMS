@@ -90,9 +90,6 @@ class SubjectController extends Controller
         if ($validator->fails()) {
             return Redirect::to('/subject')
                 ->with('status', 'Subject creation Failed');
-                // ->withErrors($validator)
-                dd($request);
-                // ->withInput(Input::all());
         } else {
             $subject = Subject::create(Input::all());
             return Redirect::to('/subject')

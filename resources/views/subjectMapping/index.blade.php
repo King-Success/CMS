@@ -162,28 +162,38 @@
                      <h5 class="modal-title">Allocate Subject</h5>
                      <button class="close" data-dismiss="modal"><span>&times;</span></button>
                  </div>
-                <form action="/subject/mapping/map"></form>
+                {!! Form::open(array('action' => 'SubjectMappingController@assignToTeacher', 'method' => 'POST')) !!}
+                <input type="hidden" name="session_id" value="1">
+                <input type="hidden" name="term_id" value="1">
                  <div class="modal-body">
                           <div class="form-group">
                               <label for="subject">Subject</label>
                               <select name="subject" id="" type="text" class="form-control">
-                                <option value=""></option>
+                                <option value="Biology">Biology</option>
+                                <option value="Mathmatics">Mathmatics</option>
+                                <option value="Physics">Physics</option>
+                                <option value="Economics">Economics</option>
                               </select>
                               <label for="teacher">Teacher</label>
-                              <select name="teacher" id="" type="text" class="form-control">
-                                <option value=""></option>
+                              <select name="teacher_id" id="" type="text" class="form-control">
+                                <option value="2">Kingsley Arinze</option>
                               </select>
                               <label for="class">Class</label>
-                              <select name="class" id="" type="text" class="form-control">
-                                <option value=""></option>
+                              <select name="class_id" id="" type="text" class="form-control">
+                                <option value="1">Jss 1</option>
+                                <option value="2">Jss 2</option>
+                                <option value="3">Jss 3</option>
+                                <option value="4">SS 1</option>
+                                <option value="5">SS 2</option>
+                                <option value="6">SS 3</option>
                               </select>
                           </div>
                  </div>
                  <div class="modal-footer">
-                     {!! Form::submit('Close', ['class' => 'btn btn-secondary', 'data-dismiss' => 'modal']) !!}
-                     {!! Form::submit('Submit', ['class' => 'btn btn-warning']) !!}
+                    {!! Form::submit('Close', ['class' => 'btn btn-secondary', 'data-dismiss' => 'modal']) !!}
+                    {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
                  </div>
-                 {!! Form::close()!!}
+                 </form>
              </div>
          </div>
      </div>
@@ -214,12 +224,11 @@
      </div>
 <script type="text/javascript">
 		$(document).ready(function() {
-
 	    	$(function() {
 			    $('#subject-mapping-table').DataTable({
 			        processing: true,
 			        serverSide: true,
-                    ajax: "{{ url('/subject/mapping/ajax/search') }}",
+                    ajax: {{ url('/subject/mapping/ajax/search') }},
                     //assigning id to tr the datatables way for easy modal display
                     createdRow: function ( row, data, index ) {
                         $('td', row).eq(0).attr('id', 'id');

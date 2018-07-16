@@ -15,30 +15,47 @@ use Auth;
 use Validator;
 use Redirect;
 use Input;
+use DB;
 use Yajra\Datatables\Datatables;
 
 class SubjectMappingController extends Controller
 {
-    public function assignToTeacher($subject_name, $teacher_id, $class_id, $session_id, $term_id, $class_options_id = null) {
+    public function assignToTeacher(Request $request) {
+        // dd($request->all());
         $user = Auth::user();
         if($user->isAdmin){
-            $subjectMap = DB::table('users')->where([
-                ['subject_name', '=', $subject_name],
+            $subject_name = $request->subject;
+            $teacher_id = $request->teacher_id;
+            $class_id = $request->class_id;
+            $session_id = $request->session_id;
+            $term_id = $request->term_id;
+
+            $subjectMap = SubjectMapping::where([
+                ['subject', '=', $subject_name],
                 ['class_id', '=', $class_id],
                 ['session_id', '=', $session_id],
-                ['term_name', '=', $term_name]
+                ['term_id', '=', $term_id]
             ])->get();
-
-        if($subjectMap) {
-            $subjectMap->teacher_id = $teacher_id;
-            $subjectMap->save();
-            return Redirect::to('/subject/mapping')
-                    ->with('status', 'Subject Reallocated Successfully');
+        if($subjectMap->all() != null) {
+            // if record already exist, redirect to update method
+            $subjectMap = $subjectMap->all();
+            $subjectMapID = $subjectMap[0]['id'];
+            return Redirect::to('/subject/mapping/'. $subjectMapID . '/update');
         }
         
-        $subjectMap = SubjectMapping::create(Input::all());
-        if($subjectMap){
-            return Redirect::to('subject/mapping')
+        $subjectMap = new SubjectMapping;
+
+        $subjectMap->subject = $subject_name;
+        $subjectMap->teacher_id = $teacher_id;
+        $subjectMap->class_id = $class_id;
+        $subjectMap->class_options_id = null;
+        $subjectMap->session_id = $session_id;
+        $subjectMap->term_id = $term_id;
+
+        $response = $subjectMap->save();
+
+        if($response){
+            return Redirect::to('subject/mapping/')
                     ->with('status', 'Subject Allocated Successfully');
         }
 
@@ -52,9 +69,10 @@ class SubjectMappingController extends Controller
     *
     * @return \Illuminate\Http\JsonResponse
     */
-    public function subjectMappingDatatable() {
+    public function subjectMappingDatatable($class_id) {
 
-        $rawSubjectMappings = SubjectMapping::all();
+        $rawSubjectMappings = SubjectMapping::where('class_id', '=', $class_id)
+            ->get();
         $subjectMappings = array();
         foreach($rawSubjectMappings as $rawSubjectMapping){
             $subjectMapping = array();
