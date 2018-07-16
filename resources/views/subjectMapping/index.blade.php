@@ -176,7 +176,8 @@
                               </select>
                               <label for="teacher">Teacher</label>
                               <select name="teacher_id" id="" type="text" class="form-control">
-                                <option value="2">Kingsley Arinze</option>
+                                <option value="1">Kingsley Arinze</option>
+                                <option value="2">Ebuka Stanley</option>
                               </select>
                               <label for="class">Class</label>
                               <select name="class_id" id="" type="text" class="form-control">

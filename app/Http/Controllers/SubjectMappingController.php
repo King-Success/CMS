@@ -14,9 +14,11 @@ use App\ClassOptions;
 use Auth;
 use Validator;
 use Redirect;
+use Route;
 use Input;
 use DB;
 use Yajra\Datatables\Datatables;
+use Illuminate\Http\Response;
 
 class SubjectMappingController extends Controller
 {
@@ -30,19 +32,28 @@ class SubjectMappingController extends Controller
             $session_id = $request->session_id;
             $term_id = $request->term_id;
 
-            $subjectMap = SubjectMapping::where([
+            $searchForSubjectMap = SubjectMapping::where([
                 ['subject', '=', $subject_name],
                 ['class_id', '=', $class_id],
                 ['session_id', '=', $session_id],
                 ['term_id', '=', $term_id]
             ])->get();
-        if($subjectMap->all() != null) {
-            // if record already exist, redirect to update method
-            $subjectMap = $subjectMap->all();
-            $subjectMapID = $subjectMap[0]['id'];
-            return Redirect::to('/subject/mapping/'. $subjectMapID . '/update');
+        if($searchForSubjectMap->all() != null) {
+            // if record already exist, get the main content from the collection
+            $content = $searchForSubjectMap->all();
+            $contentId = $content[0]['id'];
+            // since I cant call save method on searchForSubjectMap collection, I will find the record using eloquent 
+            // so that I can easily update with save method
+            $getSubjectMap = SubjectMapping::find($contentId);
+            $getSubjectMap->teacher_id = $teacher_id;
+            $response = $getSubjectMap->save();
+
+            if($response){
+                return Redirect::to('subject/mapping/')
+                    ->with('status', 'Subject Reallocated Successfully');
+            }
         }
-        
+            // otherwise create a new record
         $subjectMap = new SubjectMapping;
 
         $subjectMap->subject = $subject_name;
@@ -117,5 +128,9 @@ class SubjectMappingController extends Controller
         if($user->isAdmin) {
             return view('subjectMapping.index');
         }
+    }
+
+    public function update(Request $request, $id) {
+        dd($request->getContent());
     }
 }
