@@ -23,60 +23,29 @@ use Illuminate\Http\Response;
 class SubjectMappingController extends Controller
 {
     public function assignToTeacher(Request $request) {
-        // dd($request->all());
         $user = Auth::user();
         if($user->isAdmin){
-            $subject_name = $request->subject;
-            $teacher_id = $request->teacher_id;
-            $class_id = $request->class_id;
-            $session_id = $request->session_id;
-            $term_id = $request->term_id;
-
-            $searchForSubjectMap = SubjectMapping::where([
-                ['subject', '=', $subject_name],
-                ['class_id', '=', $class_id],
-                ['session_id', '=', $session_id],
-                ['term_id', '=', $term_id]
-            ])->get();
-        if($searchForSubjectMap->all() != null) {
-            // if record already exist, get the main content from the collection
-            $content = $searchForSubjectMap->all();
-            $contentId = $content[0]['id'];
-            // since I cant call save method on searchForSubjectMap collection, I will find the record using eloquent 
-            // so that I can easily update with save method
-            $getSubjectMap = SubjectMapping::find($contentId);
-            if($getSubjectMap->teacher_id == $teacher_id){
-                return Redirect::to('subject/mapping/')
-                    ->with('status', 'No Changes Effected');
-            }
-            $getSubjectMap->teacher_id = $teacher_id;
-            $response = $getSubjectMap->save();
-
+            // update teacher id if record already exists
+            $response = SubjectMapping::where([
+                ['subject', '=', $request->subject],
+                ['class_id', '=', $request->class_id],
+                ['session_id', '=', $request->session_id],
+                ['term_id', '=', $request->term_id]
+            ])->update(['teacher_id' => $request->teacher_id]);
             if($response){
                 return Redirect::to('subject/mapping/')
                     ->with('status', 'Subject Reallocated Successfully');
             }
-        }
             // otherwise create a new record
-        $subjectMap = new SubjectMapping;
+            $response = SubjectMapping::create(Input::all());
+            if($response){
+                return Redirect::to('subject/mapping/')
+                        ->with('status', 'Subject Allocated Successfully');
+            }
 
-        $subjectMap->subject = $subject_name;
-        $subjectMap->teacher_id = $teacher_id;
-        $subjectMap->class_id = $class_id;
-        $subjectMap->class_options_id = null;
-        $subjectMap->session_id = $session_id;
-        $subjectMap->term_id = $term_id;
-
-        $response = $subjectMap->save();
-
-        if($response){
-            return Redirect::to('subject/mapping/')
-                    ->with('status', 'Subject Allocated Successfully');
+            return Redirect::to('status', 'Subject Allocation Failed');
         }
-
-        return Redirect::to('status', 'Subject Allocation Failed');
-        }
-    
+        
     }
 
      /**

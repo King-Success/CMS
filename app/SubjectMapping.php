@@ -8,5 +8,5 @@ use App\Subject;
 
 class subjectMapping extends Model
 {
-    
+    protected $guarded = [];
 }
